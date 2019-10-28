@@ -10,6 +10,8 @@ import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.app.AppController;
 import com.example.kinoboom.request.FilmService;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
 import javax.inject.Inject;
@@ -48,9 +50,12 @@ public class FilmViewModal extends Observable {
                 .subscribe(new Consumer<FilmModal>() {
                     @Override
                     public void accept(FilmModal filmModal) throws Exception {
-
-
-
+                        Collections.sort(filmModal.getResults(), new Comparator<FilmModal.Result>() {
+                            @Override
+                            public int compare(FilmModal.Result result, FilmModal.Result t1) {
+                                return result.getTitle().compareTo(t1.getTitle());
+                            }
+                        });
 
                        for(int i=0;i<filmModal.getResults().size();i++){
                            FilmModal.Result filmResult=filmModal.getResults().get(i);
