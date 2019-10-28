@@ -2,10 +2,12 @@ package com.example.kinoboom.modal;
 
 public class Film {
 
+
         public  String posterPath;
          public String title;
          public Double popularity;
          public String releaseDate;
+
 
          public Film(String posterPath,String title,Double popularity,String releaseDate){
             this.posterPath=posterPath;
@@ -13,6 +15,8 @@ public class Film {
             this.popularity=popularity;
             this.releaseDate=releaseDate;
         }
+
+
         public String getPosterPath(){return this.posterPath;}
         public void setPosterPath(String posterPath){this.posterPath=posterPath;}
 

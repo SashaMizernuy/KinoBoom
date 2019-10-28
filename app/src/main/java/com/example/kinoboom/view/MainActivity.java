@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
     private FilmViewModal filmViewModal;
     private ActivityMainBinding mainActivityBinding;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +25,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
         setUpObserver(filmViewModal);
         filmViewModal.getFilm();
         setRecycler(mainActivityBinding.recViewSongs);
-
-
-
     }
+
 
     @Override
     public void update(Observable observable, Object o) {
@@ -51,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
         filmViewModal = new FilmViewModal(this);
         mainActivityBinding.setFilmViewModal(filmViewModal);
     }
+
 
     private void setRecycler(RecyclerView listfilm){
         RecyclerAdapter filmAdapter = new RecyclerAdapter();

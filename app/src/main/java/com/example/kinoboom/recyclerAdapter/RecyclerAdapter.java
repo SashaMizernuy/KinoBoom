@@ -71,7 +71,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
             popular.setText(String.valueOf(filmDetail.getPopularity()));
             releases.setText(filmDetail.getReleaseDate());
         }
-
     }
-
 }

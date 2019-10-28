@@ -3,7 +3,6 @@ package com.example.kinoboom.viewModal;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableInt;
 import com.example.kinoboom.modal.Film;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import javax.inject.Inject;
-import es.dmoral.toasty.Toasty;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -50,7 +48,7 @@ public class FilmViewModal extends Observable {
                 .subscribe(new Consumer<FilmModal>() {
                     @Override
                     public void accept(FilmModal filmModal) throws Exception {
-                       Toasty.success(context, "Success!"+filmModal.getResults().get(1), Toast.LENGTH_SHORT, true).show();
+
 
 
 
@@ -71,7 +69,6 @@ public class FilmViewModal extends Observable {
 
                     }
                 });
-
    }
     public List<Film> getFilmList() {
         return film;

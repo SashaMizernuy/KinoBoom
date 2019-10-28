@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class FilmModal {
+
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
@@ -89,8 +90,6 @@ public class FilmModal {
         }
 
     }
-
-
 
     public class Result {
 
