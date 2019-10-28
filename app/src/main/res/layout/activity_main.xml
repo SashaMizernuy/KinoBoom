@@ -15,7 +15,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"
@@ -31,9 +34,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="@{filmViewModal.progressBar}"/>
 
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recViewSongs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </FrameLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </layout>

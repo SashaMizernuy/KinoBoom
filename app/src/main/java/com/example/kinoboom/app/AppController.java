@@ -12,8 +12,8 @@ import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
 public class AppController extends Application {
-    private FilmService filmService; //retrofit things
-    private Scheduler scheduler; //Rx object
+    private FilmService filmService;
+    private Scheduler scheduler;
     private static AppComponent appComponent;
 
     private static AppController get(Context context){
