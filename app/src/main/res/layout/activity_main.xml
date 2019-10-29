@@ -30,18 +30,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="@{filmViewModal.progressBar}"/>
 
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                tools:showIn="@layout/activity_main">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recViewSongs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical">
                 </androidx.recyclerview.widget.RecyclerView>
 
-            </FrameLayout>
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
