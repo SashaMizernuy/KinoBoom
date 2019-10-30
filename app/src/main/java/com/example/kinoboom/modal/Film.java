@@ -7,13 +7,15 @@ public class Film {
          public String title;
          public Double popularity;
          public String releaseDate;
+         public String overview;
 
 
-         public Film(String posterPath,String title,Double popularity,String releaseDate){
+         public Film(String posterPath,String title,Double popularity,String releaseDate,String overview){
             this.posterPath=posterPath;
             this.title=title;
             this.popularity=popularity;
             this.releaseDate=releaseDate;
+            this.overview=overview;
         }
 
 
@@ -28,4 +30,7 @@ public class Film {
 
         public String getReleaseDate(){return this.releaseDate;}
         public void setReleaseDate(String releaseDate){this.releaseDate=releaseDate;}
+
+        public String getOverview(){return this.overview;}
+        public void setOverview(String overview){this.overview=overview;}
     }

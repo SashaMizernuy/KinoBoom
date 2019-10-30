@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.media.Image;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
+import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.squareup.picasso.Picasso;
 import java.util.Collections;
@@ -68,6 +73,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
             }
         });
 
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filmDetail = filmList.get(position);
+                AppCompatActivity activity=(AppCompatActivity)view.getContext();
+                DetailFragment myObj = new DetailFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("params", filmDetail.getOverview());
+                // set MyFragment Arguments
+                myObj.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.listFragment,myObj).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
