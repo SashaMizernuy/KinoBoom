@@ -1,2 +1,2 @@
 # KinoBoom
-List of PopularFilms.
+List of popular films.
