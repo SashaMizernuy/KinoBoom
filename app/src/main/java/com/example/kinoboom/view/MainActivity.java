@@ -5,8 +5,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.view.View;
-
 import com.example.kinoboom.R;
 import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
 import com.example.kinoboom.viewModal.FilmViewModal;
@@ -36,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
             RecyclerAdapter filmAdapter = (RecyclerAdapter) mainActivityBinding.recViewSongs.getAdapter();
             FilmViewModal filmVM = (FilmViewModal) observable;
             filmAdapter.setFilmList(this,filmVM.getFilmList());
-
-
         }
     }
 
@@ -58,5 +54,4 @@ public class MainActivity extends AppCompatActivity implements Observer {
         listfilm.setLayoutManager(new LinearLayoutManager(this));
         listfilm.setHasFixedSize(true);
     }
-
 }

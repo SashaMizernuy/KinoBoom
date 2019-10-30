@@ -2,7 +2,6 @@ package com.example.kinoboom.app;
 
 import android.app.Application;
 import android.content.Context;
-
 import com.example.kinoboom.component.AppComponent;
 import com.example.kinoboom.component.DaggerAppComponent;
 import com.example.kinoboom.request.FilmService;
@@ -33,7 +32,6 @@ public class AppController extends Application {
         return scheduler;
     }
 
-
     public void setUserService(FilmService filmService) {
         this.filmService = filmService;
     }
@@ -55,5 +53,4 @@ public class AppController extends Application {
     public AppComponent buildAppComponent() {
         return DaggerAppComponent.builder().filmServiceModule(new FilmServiceModule()).build();
     }
-
 }

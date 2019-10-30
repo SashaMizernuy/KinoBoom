@@ -35,14 +35,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:showIn="@layout/activity_main">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recViewSongs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="vertical">
-                </androidx.recyclerview.widget.RecyclerView>
-
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recViewSongs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical">
+                    </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
 
             <FrameLayout
@@ -58,6 +56,5 @@
                 app:layout_constraintStart_toStartOf="@+id/frameLayout"
                 app:layout_constraintTop_toTopOf="@+id/frameLayout"
                 app:layout_constraintVertical_bias="1.0" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

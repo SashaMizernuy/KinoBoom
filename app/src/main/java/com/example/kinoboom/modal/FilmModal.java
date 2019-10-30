@@ -88,7 +88,6 @@ public class FilmModal {
         public void setMinimum(String minimum) {
             this.minimum = minimum;
         }
-
     }
 
     public class Result {

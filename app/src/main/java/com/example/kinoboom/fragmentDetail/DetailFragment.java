@@ -12,7 +12,6 @@ import com.example.kinoboom.R;
 
 public class DetailFragment extends Fragment {
 
-
     public DetailFragment() {
     }
 

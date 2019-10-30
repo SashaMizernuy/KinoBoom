@@ -3,18 +3,15 @@ package com.example.kinoboom.recyclerAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentDetail.DetailFragment;
@@ -24,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAdapterViewHolder>{
@@ -32,8 +29,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
     private List<Film> filmList;
     private Film filmDetail;
     Context context;
-
-
 
 
     public RecyclerAdapter() {this.filmList = Collections.emptyList();}
@@ -124,7 +119,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
             popular.setText(String.valueOf(filmDetail.getPopularity()));
             releases.setText(filmDetail.getReleaseDate());
         }
-
-
     }
 }
