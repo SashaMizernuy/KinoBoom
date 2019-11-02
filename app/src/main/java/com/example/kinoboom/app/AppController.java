@@ -6,7 +6,6 @@ import com.example.kinoboom.component.AppComponent;
 import com.example.kinoboom.component.DaggerAppComponent;
 import com.example.kinoboom.request.FilmService;
 import com.example.kinoboom.request.FilmServiceModule;
-
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 

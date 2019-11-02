@@ -1,6 +1,7 @@
 package com.example.kinoboom.component;
 
 
+import com.example.kinoboom.view.MainActivity;
 import com.example.kinoboom.viewModal.FilmViewModal;
 import com.example.kinoboom.request.FilmServiceModule;
 
@@ -12,5 +13,5 @@ import dagger.Component;
 @Component(modules = {FilmServiceModule.class})
 @Singleton
 public interface AppComponent {
-    void inject(FilmViewModal filmViewModal);
+    void inject(MainActivity mainActivity);
 }

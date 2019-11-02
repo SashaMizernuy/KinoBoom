@@ -1,57 +1,62 @@
 package com.example.kinoboom.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 import com.example.kinoboom.R;
-import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
+import com.example.kinoboom.presenter.Presenter;
+import com.example.kinoboom.presenter.PresenterInterface;
 import com.example.kinoboom.viewModal.FilmViewModal;
-import com.example.kinoboom.databinding.ActivityMainBinding;
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class MainActivity extends AppCompatActivity implements Observer {
+import javax.inject.Inject;
 
-    private FilmViewModal filmViewModal;
-    private ActivityMainBinding mainActivityBinding;
+import es.dmoral.toasty.Toasty;
+
+import static com.example.kinoboom.app.AppController.getAppComponent;
+
+
+public class MainActivity extends AppCompatActivity implements PresenterInterface {
+
+
+    @Inject
+    public FilmViewModal filmViewModal;
+
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initBinding();
-        setUpObserver(filmViewModal);
-        filmViewModal.getFilm();
-        setRecycler(mainActivityBinding.recViewSongs);
+        getAppComponent().inject(this);
+        initialView();
+
+        Presenter presenter=new Presenter(filmViewModal,this);
+        presenter.getDataList();
+    }
+
+    public void initialView(){
+        setContentView(R.layout.activity_main);
+        progressBar=findViewById(R.id.progressBar);
+
     }
 
 
     @Override
-    public void update(Observable observable, Object o) {
-        if (observable instanceof FilmViewModal) {
-            RecyclerAdapter filmAdapter = (RecyclerAdapter) mainActivityBinding.recViewSongs.getAdapter();
-            FilmViewModal filmVM = (FilmViewModal) observable;
-            filmAdapter.setFilmList(this,filmVM.getFilmList());
-        }
+    public void progressBarVisible() {
+        progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void setUpObserver(Observable observable) {
-        observable.addObserver(this);
+    @Override
+    public void progressBarGone() {
+        progressBar.setVisibility(View.GONE);
+
     }
 
-    private void initBinding(){
-        mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        filmViewModal = new FilmViewModal(this);
-        mainActivityBinding.setFilmViewModal(filmViewModal);
+    @Override
+    public void error(String error) {
+        Toasty.error(this, "Error: "+error, Toast.LENGTH_LONG).show();
     }
 
-
-    private void setRecycler(RecyclerView listfilm){
-        RecyclerAdapter filmAdapter = new RecyclerAdapter();
-        listfilm.setAdapter(filmAdapter);
-        listfilm.setLayoutManager(new LinearLayoutManager(this));
-        listfilm.setHasFixedSize(true);
-    }
 }
