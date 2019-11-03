@@ -17,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAdapterViewHolder> {
 
     private OnItemClickListener clickListener;
@@ -25,7 +24,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
     private List<Film> filmList;
     private Film filmDetail;
     Context context;
-
 
     public RecyclerAdapter() {this.filmList = Collections.emptyList();}
 

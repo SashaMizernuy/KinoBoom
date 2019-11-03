@@ -45,6 +45,7 @@ public class FilmViewModal  {
                 });
     }
 
+    
     public void sortData(FilmModal filmModal){
         Collections.sort(filmModal.getResults(), new Comparator<FilmModal.Result>() {
             @Override
@@ -52,7 +53,6 @@ public class FilmViewModal  {
                 return result.getTitle().compareTo(t1.getTitle());
             }
         });
-
     }
 }
 

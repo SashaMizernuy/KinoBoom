@@ -16,6 +16,7 @@ public class Film {
         this.overview=overview;
     }
 
+
         public String getPosterPath(){return this.posterPath;}
         public void setPosterPath(String posterPath){this.posterPath=posterPath;}
 

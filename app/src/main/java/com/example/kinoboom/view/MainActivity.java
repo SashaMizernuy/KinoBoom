@@ -18,7 +18,6 @@ import com.example.kinoboom.viewModal.FilmViewModal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
@@ -26,6 +25,7 @@ import static com.example.kinoboom.app.AppController.getAppComponent;
 
 
 public class MainActivity extends AppCompatActivity implements PresenterInterface {
+
 
 
     @Inject
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements PresenterInterfac
         super.onCreate(savedInstanceState);
         getAppComponent().inject(this);
         initialView();
-
         presenter = new Presenter(filmViewModal, this,this);
         presenter.getDataList();
     }

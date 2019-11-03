@@ -2,10 +2,7 @@ package com.example.kinoboom.component;
 
 
 import com.example.kinoboom.view.MainActivity;
-import com.example.kinoboom.viewModal.FilmViewModal;
 import com.example.kinoboom.request.FilmServiceModule;
-
-
 import javax.inject.Singleton;
 
 import dagger.Component;

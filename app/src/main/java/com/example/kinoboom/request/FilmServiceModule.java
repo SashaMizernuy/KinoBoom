@@ -18,7 +18,6 @@ public class FilmServiceModule {
         return retrofit.create(FilmService.class);
     }
 
-
     @Provides
     @Singleton
     public Retrofit retrofit(GsonConverterFactory gsonConverterFactory) {

@@ -63,7 +63,6 @@ public class FilmModal {
         this.totalPages = totalPages;
     }
 
-
     public class Dates {
 
         @SerializedName("maximum")

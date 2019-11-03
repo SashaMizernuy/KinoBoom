@@ -22,7 +22,6 @@ public class AppController extends Application {
         return AppController.get(context);
     }
 
-
     public Scheduler subscribeScheduler() {
         if (scheduler == null) {
             scheduler = Schedulers.io();
