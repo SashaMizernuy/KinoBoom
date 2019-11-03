@@ -18,9 +18,10 @@ import butterknife.ButterKnife;
 
 
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAdapterViewHolder>{
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAdapterViewHolder> {
 
     private OnItemClickListener clickListener;
+    private OnItemLongClickListener longClickListener;
     private List<Film> filmList;
     private Film filmDetail;
     Context context;
@@ -28,14 +29,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
 
     public RecyclerAdapter() {this.filmList = Collections.emptyList();}
 
-    public RecyclerAdapter(Context context, List<Film> filmList, OnItemClickListener clickListener) {
+    public RecyclerAdapter(Context context, List<Film> filmList, OnItemClickListener clickListener, OnItemLongClickListener longClickListener) {
         this.clickListener=clickListener;
+        this.longClickListener=longClickListener;
         this.context=context;
         this.filmList = filmList;
         notifyDataSetChanged();
     }
+
     public interface OnItemClickListener{
         void onClick(Film film);
+    }
+    public interface OnItemLongClickListener{
+        void onLongClick(Film film);
     }
 
 
@@ -51,29 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         filmDetail = filmList.get(position);
         holder.bindData(filmDetail);
         holder.click(filmDetail,clickListener);
-//        holder.image.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//                filmDetail = filmList.get(position);
-//                new AlertDialog.Builder(context)
-//                        .setTitle(filmDetail.title)
-//                        .setMessage("Delete this item ?")
-//                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                filmList.remove(position);
-//                                notifyItemRemoved(position);
-//                                notifyItemRangeChanged(position,filmList.size());
-//                            }
-//                        })
-//                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                            }
-//                        })
-//                        .setIcon(android.R.drawable.ic_dialog_alert)
-//                        .show();
-//                return false;
-//            }
-//        });
+        holder.longClick(filmDetail,longClickListener);
     }
 
     @Override
@@ -87,7 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         return filmList.size();
     }
 
-    public static class FilmAdapterViewHolder extends RecyclerView.ViewHolder  {
+    public class FilmAdapterViewHolder extends RecyclerView.ViewHolder  {
 
         @BindView(R.id.titleFilm) ImageView image;
         @BindView(R.id.txtTitle)public TextView title;
@@ -108,15 +92,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         }
 
         public void click(Film film,OnItemClickListener listener){
-
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     listener.onClick(film);
-
                 }
             });
+        }
 
+        public void longClick(Film film,OnItemLongClickListener longListener){
+            image.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    longListener.onLongClick(film);
+                    return false;
+                }
+            });
         }
     }
 }
