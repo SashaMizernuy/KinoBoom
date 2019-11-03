@@ -6,5 +6,6 @@ public interface PresenterInterface {
 
     void progressBarVisible();
     void progressBarGone();
+    void getDataListAccept(FilmModal filmModal);
     void error(String error);
 }

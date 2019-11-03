@@ -1,6 +1,5 @@
 package com.example.kinoboom.presenter;
 
-
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
 
@@ -10,6 +9,9 @@ public class Presenter {
     private final FilmViewModal filmViewModal;
 
     private final PresenterInterface presenterInterface;
+
+
+
 
 
     public Presenter(FilmViewModal filmViewModal, PresenterInterface presenterInterface) {
@@ -23,17 +25,19 @@ public class Presenter {
         filmViewModal.nowPlaying(new FilmViewModal.CallbackInterface() {
             @Override
             public void accept(FilmModal filmModal) {
-
+                presenterInterface.getDataListAccept(filmModal);
                 presenterInterface.progressBarGone();
 
             }
 
             @Override
             public void error(String error) {
-                presenterInterface.progressBarGone();
                 presenterInterface.error(error);
+                presenterInterface.progressBarGone();
+
 
             }
         });
     }
+
 }
