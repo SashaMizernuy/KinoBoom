@@ -6,7 +6,6 @@ import com.example.kinoboom.component.AppComponent;
 import com.example.kinoboom.component.DaggerAppComponent;
 import com.example.kinoboom.request.FilmService;
 import com.example.kinoboom.request.FilmServiceModule;
-
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
@@ -22,7 +21,6 @@ public class AppController extends Application {
     public static AppController create(Context context) {
         return AppController.get(context);
     }
-
 
     public Scheduler subscribeScheduler() {
         if (scheduler == null) {

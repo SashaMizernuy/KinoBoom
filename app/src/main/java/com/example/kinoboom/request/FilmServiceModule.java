@@ -1,6 +1,7 @@
 package com.example.kinoboom.request;
 
 
+import com.example.kinoboom.viewModal.FilmViewModal;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +18,6 @@ public class FilmServiceModule {
         return retrofit.create(FilmService.class);
     }
 
-
     @Provides
     @Singleton
     public Retrofit retrofit(GsonConverterFactory gsonConverterFactory) {
@@ -33,6 +33,12 @@ public class FilmServiceModule {
     @Singleton
     public GsonConverterFactory gsonConverterFactory() {
         return GsonConverterFactory.create();
+    }
+
+    @Provides
+    @Singleton
+    public FilmViewModal filmViewModal(FilmService filmService){
+        return new FilmViewModal(filmService);
     }
 
 }
