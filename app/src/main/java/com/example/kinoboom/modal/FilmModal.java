@@ -2,11 +2,9 @@ package com.example.kinoboom.modal;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class FilmModal {
-
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
@@ -64,7 +62,6 @@ public class FilmModal {
     }
 
     public class Dates {
-
         @SerializedName("maximum")
         @Expose
         private String maximum;
@@ -90,7 +87,6 @@ public class FilmModal {
     }
 
     public class Result {
-
         @SerializedName("popularity")
         @Expose
         private Double popularity;
@@ -245,6 +241,5 @@ public class FilmModal {
         public void setReleaseDate(String releaseDate) {
             this.releaseDate = releaseDate;
         }
-
     }
 }

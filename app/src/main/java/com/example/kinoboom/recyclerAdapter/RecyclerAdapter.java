@@ -1,7 +1,6 @@
 package com.example.kinoboom.recyclerAdapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,42 +10,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.modal.Film;
 import com.squareup.picasso.Picasso;
-import java.util.Collections;
-import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import java.util.Collections;
+import java.util.List;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAdapterViewHolder> {
-
     private OnItemClickListener clickListener;
     private OnItemLongClickListener longClickListener;
     private List<Film> filmList;
     private Film filmDetail;
-    Context context;
+    private Context context;
 
-    public RecyclerAdapter() {this.filmList = Collections.emptyList();}
+    public RecyclerAdapter() {
+        this.filmList = Collections.emptyList();
+    }
 
-    public RecyclerAdapter(Context context, List<Film> filmList, OnItemClickListener clickListener, OnItemLongClickListener longClickListener) {
-        this.clickListener=clickListener;
-        this.longClickListener=longClickListener;
-        this.context=context;
+    public RecyclerAdapter(Context context, List<Film> filmList,
+                           OnItemClickListener clickListener,
+                           OnItemLongClickListener longClickListener) {
+        this.clickListener = clickListener;
+        this.longClickListener = longClickListener;
+        this.context = context;
         this.filmList = filmList;
         notifyDataSetChanged();
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onClick(Film film);
     }
-    public interface OnItemLongClickListener{
+
+    public interface OnItemLongClickListener {
         void onLongClick(Film film);
     }
 
-
     @Override
     public FilmAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout, parent, false);
-
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recycler_layout, parent, false);
         return new FilmAdapterViewHolder(itemView);
     }
 
@@ -60,22 +62,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
 
     @Override
     public int getItemCount() {
-        if(filmList !=null){
-            Log.d("getItemCOunt: ",String.valueOf(filmList.size()));
-        }
-        else{
-            Log.d("getItemCOunt: ","SONGLIST IS NULL");
-        }
         return filmList.size();
     }
 
     public class FilmAdapterViewHolder extends RecyclerView.ViewHolder  {
-
         @BindView(R.id.titleFilm) ImageView image;
         @BindView(R.id.txtTitle)public TextView title;
         @BindView(R.id.popular)public TextView popular;
         @BindView(R.id.release)public TextView releases;
-
 
         public FilmAdapterViewHolder(View view) {
             super(view);
@@ -83,7 +77,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         }
 
         public void bindData(final Film filmDetail) {
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+filmDetail.getPosterPath()).fit().into(image);
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/"+filmDetail.
+                    getPosterPath()).fit().into(image);
             title.setText(filmDetail.getTitle());
             popular.setText(String.valueOf(filmDetail.getPopularity()));
             releases.setText(filmDetail.getReleaseDate());

@@ -1,17 +1,16 @@
 package com.example.kinoboom.request;
 
-
-import com.example.kinoboom.viewModal.FilmViewModal;
-import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.kinoboom.viewModal.FilmViewModal;
+import javax.inject.Singleton;
+
 
 @Module
 public class FilmServiceModule {
-
     @Provides
     @Singleton
     public FilmService filmService(Retrofit retrofit) {
@@ -37,8 +36,7 @@ public class FilmServiceModule {
 
     @Provides
     @Singleton
-    public FilmViewModal filmViewModal(FilmService filmService){
+    public FilmViewModal filmViewModal(FilmService filmService) {
         return new FilmViewModal(filmService);
     }
-
 }
