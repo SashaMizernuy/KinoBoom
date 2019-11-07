@@ -1,6 +1,5 @@
 package com.example.kinoboom.presenter;
 
-import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
@@ -34,14 +33,14 @@ public class FilmPresenter implements FilmListContract.Presenter {
     }
 
     @Override
-    public void onClickView(Film film, DetailFragment myObj) {
+    public void startFragment(Film film) {
         view.progressBarVisible();
-        view.startFragments(myObj);
+        view.createFragment(film);
         view.progressBarGone();
     }
 
     @Override
-    public void onLongClickView(Film film) {
+    public void deleteItem(Film film) {
         view.progressBarVisible();
         view.getAlertDialog(film);
         view.progressBarGone();

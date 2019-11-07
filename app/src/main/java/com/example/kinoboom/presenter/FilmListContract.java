@@ -1,6 +1,5 @@
 package com.example.kinoboom.presenter;
 
-import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 
@@ -18,7 +17,7 @@ public interface FilmListContract {
 
         void getAlertDialog(Film film);
 
-        void startFragments(DetailFragment myObj);
+        void createFragment(Film film);
 
         void addData(FilmModal filmModal);
     }
@@ -26,8 +25,8 @@ public interface FilmListContract {
     interface Presenter{
         void getDataList();
 
-        void onClickView(Film film,DetailFragment myObj);
+        void startFragment(Film film);
 
-        void onLongClickView(Film film);
+        void deleteItem(Film film);
     }
 }

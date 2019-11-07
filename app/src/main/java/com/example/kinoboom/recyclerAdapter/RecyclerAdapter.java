@@ -1,6 +1,5 @@
 package com.example.kinoboom.recyclerAdapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import com.example.kinoboom.modal.Film;
 import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -21,28 +19,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
     private OnItemLongClickListener longClickListener;
     private List<Film> filmList;
     private Film filmDetail;
-    private Context context;
 
-    public RecyclerAdapter() {
-        this.filmList = Collections.emptyList();
-    }
-
-    public RecyclerAdapter(Context context, List<Film> filmList,
+    public RecyclerAdapter(List<Film> filmList,
                            OnItemClickListener clickListener,
                            OnItemLongClickListener longClickListener) {
         this.clickListener = clickListener;
         this.longClickListener = longClickListener;
-        this.context = context;
         this.filmList = filmList;
         notifyDataSetChanged();
     }
 
     public interface OnItemClickListener {
-        void onClick(Film film);
+        void startFragment(Film film);
     }
 
     public interface OnItemLongClickListener {
-        void onLongClick(Film film);
+        void deleteItem(Film film);
     }
 
     @Override
@@ -85,21 +77,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         }
 
         public void click(Film film,OnItemClickListener listener){
-            image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onClick(film);
-                }
-            });
+            image.setOnClickListener(view -> listener.startFragment(film));
         }
 
         public void longClick(Film film,OnItemLongClickListener longListener){
-            image.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    longListener.onLongClick(film);
-                    return false;
-                }
+            image.setOnLongClickListener(view -> {
+                longListener.deleteItem(film);
+                return false;
             });
         }
     }
