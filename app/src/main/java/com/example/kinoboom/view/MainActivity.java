@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
         Bundle bundle = new Bundle();
         bundle.putString("params", film.getOverview());
         myObj.setArguments(bundle);
-        this.getSupportFragmentManager().
+        getSupportFragmentManager().
                 beginTransaction().
                 replace(R.id.listFragment, myObj).
                 addToBackStack(null).
