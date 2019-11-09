@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
                 (film)-> {
                         presenter.onFilmClicked(film);
                 },
-                (film)-> {
-                        presenter.onFilmLongClicked(film);
+                (film,position)-> {
+                        presenter.onFilmLongClicked(film,position);
         });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         adapter.setLayoutManager(layoutManager);
@@ -110,13 +110,13 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void deleteItemDialog(Film film) {
+    public void deleteItemDialog(Film film,int position) {
         new AlertDialog.Builder(this)
                 .setTitle(film.title)
                 .setMessage("Delete this item ?")
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                     filmList.remove(film);
-                    recyclerAdapter.notifyDataSetChanged();
+                    recyclerAdapter.notifyItemRemoved(position);
                 })
                 .setNegativeButton(android.R.string.no, (dialog, which) -> {
                 })

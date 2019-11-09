@@ -15,7 +15,7 @@ public interface FilmListContract {
 
         void error(String error);
 
-        void deleteItemDialog(Film film);
+        void deleteItemDialog(Film film,int position);
 
         void aboutFilmFragment(Film film);
 
@@ -27,6 +27,6 @@ public interface FilmListContract {
 
         void onFilmClicked(Film film);
 
-        void onFilmLongClicked(Film film);
+        void onFilmLongClicked(Film film,int position);
     }
 }

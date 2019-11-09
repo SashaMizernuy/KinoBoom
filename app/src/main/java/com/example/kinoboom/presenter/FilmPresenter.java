@@ -40,9 +40,9 @@ public class FilmPresenter implements FilmListContract.Presenter {
     }
 
     @Override
-    public void onFilmLongClicked(Film film) {
+    public void onFilmLongClicked(Film film,int position) {
         view.progressBarVisible();
-        view.deleteItemDialog(film);
+        view.deleteItemDialog(film,position);
         view.progressBarGone();
     }
 }

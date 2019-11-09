@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.modal.Film;
+import com.example.kinoboom.presenter.FilmListContract;
 import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
     }
 
     public interface OnItemLongClickListener {
-        void deleteItem(Film film);
+        void deleteItem(Film film,int position);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         filmDetail = filmList.get(position);
         holder.bindData(filmDetail);
         holder.click(filmDetail,clickListener);
-        holder.longClick(filmDetail,longClickListener);
+        holder.longClick(filmDetail,longClickListener,position);
     }
 
     @Override
@@ -80,9 +81,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
             image.setOnClickListener(view -> listener.startFragment(film));
         }
 
-        public void longClick(Film film,OnItemLongClickListener longListener){
+        public void longClick(Film film, OnItemLongClickListener longListener,int position){
             image.setOnLongClickListener(view -> {
-                longListener.deleteItem(film);
+                longListener.deleteItem(film,position);
                 return false;
             });
         }
