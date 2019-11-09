@@ -21,8 +21,8 @@ public class FilmViewModal  {
         void error(String error);
     }
 
-    public Disposable nowPlaying(CallbackInterface callback) {
-        return filmService.nowPlaying()
+    public Disposable getCallData(CallbackInterface callback) {
+        return filmService.callData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable ->callback.error(throwable.getMessage()) )
@@ -33,6 +33,6 @@ public class FilmViewModal  {
     }
 
     public void sortData(FilmModal filmModal) {
-        Collections.sort(filmModal.getResults(), (result, t1) -> result.getTitle().compareTo(t1.getTitle()));
+         Collections.sort(filmModal.getResults(), (result, t1) -> result.getTitle().compareTo(t1.getTitle()));
     }
 }

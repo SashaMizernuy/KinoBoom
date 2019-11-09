@@ -15,13 +15,13 @@ public class FilmPresenter implements FilmListContract.Presenter {
     }
 
     @Override
-    public void getDataList() {
+    public void onViewCreated() {
         view.progressBarVisible();
-        filmViewModal.nowPlaying(new FilmViewModal.CallbackInterface() {
+        filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
             @Override
             public void accept(FilmModal filmModal) {
                 view.addData(filmModal);
-                view.getDataListAccept(filmModal);
+                view.displayingAdapter(filmModal);
                 view.progressBarGone();
             }
             @Override
@@ -33,16 +33,16 @@ public class FilmPresenter implements FilmListContract.Presenter {
     }
 
     @Override
-    public void startFragment(Film film) {
+    public void onFilmClicked(Film film) {
         view.progressBarVisible();
-        view.createFragment(film);
+        view.aboutFilmFragment(film);
         view.progressBarGone();
     }
 
     @Override
-    public void deleteItem(Film film) {
+    public void onFilmLongClicked(Film film) {
         view.progressBarVisible();
-        view.getAlertDialog(film);
+        view.deleteItemDialog(film);
         view.progressBarGone();
     }
 }

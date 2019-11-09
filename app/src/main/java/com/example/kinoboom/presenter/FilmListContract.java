@@ -11,22 +11,22 @@ public interface FilmListContract {
 
         void progressBarGone();
 
-        void getDataListAccept(FilmModal filmModal);
+        void displayingAdapter(FilmModal filmModal);
 
         void error(String error);
 
-        void getAlertDialog(Film film);
+        void deleteItemDialog(Film film);
 
-        void createFragment(Film film);
+        void aboutFilmFragment(Film film);
 
         void addData(FilmModal filmModal);
     }
 
     interface Presenter{
-        void getDataList();
+        void onViewCreated();
 
-        void startFragment(Film film);
+        void onFilmClicked(Film film);
 
-        void deleteItem(Film film);
+        void onFilmLongClicked(Film film);
     }
 }

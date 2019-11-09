@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
         ButterKnife.bind(this);
         filmList = new ArrayList<>();
         presenter = new FilmPresenter(filmViewModal, this);
-        presenter.getDataList();
+        presenter.onViewCreated();
     }
 
     @Override
@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void getDataListAccept(FilmModal filmModal) {
+    public void displayingAdapter(FilmModal filmModal) {
         recyclerAdapter = new RecyclerAdapter(filmList,
                 (film)-> {
-                        presenter.startFragment(film);
+                        presenter.onFilmClicked(film);
                 },
                 (film)-> {
-                        presenter.deleteItem(film);
+                        presenter.onFilmLongClicked(film);
         });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         adapter.setLayoutManager(layoutManager);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void createFragment(Film film) {
+    public void aboutFilmFragment(Film film) {
         DetailFragment myObj = new DetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("params", film.getOverview());
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void getAlertDialog(Film film) {
+    public void deleteItemDialog(Film film) {
         new AlertDialog.Builder(this)
                 .setTitle(film.title)
                 .setMessage("Delete this item ?")
