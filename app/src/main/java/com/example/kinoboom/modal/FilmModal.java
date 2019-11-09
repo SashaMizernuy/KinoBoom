@@ -7,239 +7,238 @@ import java.util.List;
 public class FilmModal {
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<Result> mResults = null;
     @SerializedName("page")
     @Expose
-    private Integer page;
+    private Integer mPage;
     @SerializedName("total_results")
     @Expose
-    private Integer totalResults;
+    private Integer mTotalResults;
     @SerializedName("dates")
     @Expose
-    private Dates dates;
+    private Dates mDates;
     @SerializedName("total_pages")
     @Expose
-    private Integer totalPages;
+    private Integer mTotalPages;
 
     public List<Result> getResults() {
-        return results;
+        return mResults;
     }
 
     public void setResults(List<Result> results) {
-        this.results = results;
+        this.mResults = results;
     }
 
     public Integer getPage() {
-        return page;
+        return mPage;
     }
 
     public void setPage(Integer page) {
-        this.page = page;
+        this.mPage = page;
     }
 
     public Integer getTotalResults() {
-        return totalResults;
+        return mTotalResults;
     }
 
     public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
+        this.mTotalResults = totalResults;
     }
 
     public Dates getDates() {
-        return dates;
+        return mDates;
     }
 
     public void setDates(Dates dates) {
-        this.dates = dates;
+        this.mDates = dates;
     }
 
     public Integer getTotalPages() {
-        return totalPages;
+        return mTotalPages;
     }
 
     public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
+        this.mTotalPages = totalPages;
     }
 
     public class Dates {
         @SerializedName("maximum")
         @Expose
-        private String maximum;
+        private String mMaximum;
         @SerializedName("minimum")
         @Expose
-        private String minimum;
+        private String mMinimum;
 
         public String getMaximum() {
-            return maximum;
+            return mMaximum;
         }
 
         public void setMaximum(String maximum) {
-            this.maximum = maximum;
         }
 
         public String getMinimum() {
-            return minimum;
+            return mMinimum;
         }
 
         public void setMinimum(String minimum) {
-            this.minimum = minimum;
+            this.mMinimum = minimum;
         }
     }
 
     public class Result {
         @SerializedName("popularity")
         @Expose
-        private Double popularity;
+        private Double mPopularity;
         @SerializedName("vote_count")
         @Expose
-        private Integer voteCount;
+        private Integer mVoteCount;
         @SerializedName("video")
         @Expose
-        private Boolean video;
+        private Boolean mVideo;
         @SerializedName("poster_path")
         @Expose
-        private String posterPath;
+        private String mPosterPath;
         @SerializedName("id")
         @Expose
-        private Integer id;
+        private Integer mId;
         @SerializedName("adult")
         @Expose
-        private Boolean adult;
+        private Boolean mAdult;
         @SerializedName("backdrop_path")
         @Expose
-        private String backdropPath;
+        private String mBackdropPath;
         @SerializedName("original_language")
         @Expose
-        private String originalLanguage;
+        private String mOriginalLanguage;
         @SerializedName("original_title")
         @Expose
-        private String originalTitle;
+        private String mOriginalTitle;
         @SerializedName("genre_ids")
         @Expose
-        private List<Integer> genreIds = null;
+        private List<Integer> mGenreIds = null;
         @SerializedName("title")
         @Expose
-        private String title;
+        private String mTitle;
         @SerializedName("vote_average")
         @Expose
-        private Double voteAverage;
+        private Double mVoteAverage;
         @SerializedName("overview")
         @Expose
-        private String overview;
+        private String mOverview;
         @SerializedName("release_date")
         @Expose
-        private String releaseDate;
+        private String mReleaseDate;
 
         public Double getPopularity() {
-            return popularity;
+            return mPopularity;
         }
 
         public void setPopularity(Double popularity) {
-            this.popularity = popularity;
+            this.mPopularity = popularity;
         }
 
         public Integer getVoteCount() {
-            return voteCount;
+            return mVoteCount;
         }
 
         public void setVoteCount(Integer voteCount) {
-            this.voteCount = voteCount;
+            this.mVoteCount = voteCount;
         }
 
         public Boolean getVideo() {
-            return video;
+            return mVideo;
         }
 
         public void setVideo(Boolean video) {
-            this.video = video;
+            this.mVideo = video;
         }
 
         public String getPosterPath() {
-            return posterPath;
+            return mPosterPath;
         }
 
         public void setPosterPath(String posterPath) {
-            this.posterPath = posterPath;
+            this.mPosterPath = posterPath;
         }
 
         public Integer getId() {
-            return id;
+            return mId;
         }
 
         public void setId(Integer id) {
-            this.id = id;
+            this.mId = id;
         }
 
         public Boolean getAdult() {
-            return adult;
+            return mAdult;
         }
 
         public void setAdult(Boolean adult) {
-            this.adult = adult;
+            this.mAdult = adult;
         }
 
         public String getBackdropPath() {
-            return backdropPath;
+            return mBackdropPath;
         }
 
         public void setBackdropPath(String backdropPath) {
-            this.backdropPath = backdropPath;
+            this.mBackdropPath = backdropPath;
         }
 
         public String getOriginalLanguage() {
-            return originalLanguage;
+            return mOriginalLanguage;
         }
 
         public void setOriginalLanguage(String originalLanguage) {
-            this.originalLanguage = originalLanguage;
+            this.mOriginalLanguage = originalLanguage;
         }
 
         public String getOriginalTitle() {
-            return originalTitle;
+            return mOriginalTitle;
         }
 
         public void setOriginalTitle(String originalTitle) {
-            this.originalTitle = originalTitle;
+            this.mOriginalTitle = originalTitle;
         }
 
         public List<Integer> getGenreIds() {
-            return genreIds;
+            return mGenreIds;
         }
 
         public void setGenreIds(List<Integer> genreIds) {
-            this.genreIds = genreIds;
+            this.mGenreIds = genreIds;
         }
 
         public String getTitle() {
-            return title;
+            return mTitle;
         }
 
         public void setTitle(String title) {
-            this.title = title;
+            this.mTitle = title;
         }
 
         public Double getVoteAverage() {
-            return voteAverage;
+            return mVoteAverage;
         }
 
         public void setVoteAverage(Double voteAverage) {
-            this.voteAverage = voteAverage;
+            this.mVoteAverage = voteAverage;
         }
 
         public String getOverview() {
-            return overview;
+            return mOverview;
         }
 
         public void setOverview(String overview) {
-            this.overview = overview;
+            this.mOverview = overview;
         }
 
         public String getReleaseDate() {
-            return releaseDate;
+            return mReleaseDate;
         }
 
         public void setReleaseDate(String releaseDate) {
-            this.releaseDate = releaseDate;
+            this.mReleaseDate = releaseDate;
         }
     }
 }
