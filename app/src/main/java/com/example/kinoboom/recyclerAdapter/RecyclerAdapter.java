@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.modal.Film;
-import com.example.kinoboom.presenter.FilmListContract;
 import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,11 +30,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
     }
 
     public interface OnItemClickListener {
-        void startFragment(Film film);
+        void clicked(Film film);
     }
 
     public interface OnItemLongClickListener {
-        void deleteItem(Film film,int position);
+        void longClicked(Film film,int position);
     }
 
     @Override
@@ -78,12 +77,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.FilmAd
         }
 
         public void click(Film film,OnItemClickListener listener){
-            image.setOnClickListener(view -> listener.startFragment(film));
+            image.setOnClickListener(view -> listener.clicked(film));
         }
 
         public void longClick(Film film, OnItemLongClickListener longListener,int position){
             image.setOnLongClickListener(view -> {
-                longListener.deleteItem(film,position);
+                longListener.longClicked(film,position);
                 return false;
             });
         }
