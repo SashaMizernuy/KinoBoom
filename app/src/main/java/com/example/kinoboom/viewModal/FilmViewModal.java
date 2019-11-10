@@ -2,6 +2,7 @@ package com.example.kinoboom.viewModal;
 
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.request.FilmService;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -25,10 +26,10 @@ public class FilmViewModal  {
         return filmService.callData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwable ->callback.error(throwable.getMessage()) )
+                .onErrorResumeNext((ObservableSource<? extends FilmModal>) throwable -> callback.error(throwable.toString()))
                 .subscribe(filmModal -> {
-                    sortData(filmModal);
-                    callback.accept(filmModal);
+                        sortData(filmModal);
+                        callback.accept(filmModal);
                 });
     }
 
