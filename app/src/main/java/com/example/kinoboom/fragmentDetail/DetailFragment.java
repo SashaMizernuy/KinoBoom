@@ -19,6 +19,7 @@ public class DetailFragment extends Fragment {
             updateBox.setVisibility(View.VISIBLE);
             String text = getArguments().getString("params");
             updateBox.setText(text);
+
         }
         return v;
     }

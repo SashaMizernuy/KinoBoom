@@ -1,11 +1,14 @@
 package com.example.kinoboom.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
@@ -107,6 +110,15 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
                 replace(R.id.listFragment, myObj).
                 addToBackStack(null).
                 commit();
+    }
+
+    @Override
+    public void detachAboutFragment() {
+        for (int i=0;i<getSupportFragmentManager().getFragments().size();i++) {
+            Fragment fragment = getSupportFragmentManager().getFragments().get(i);
+            if (fragment != null)
+                getSupportFragmentManager().beginTransaction().detach(fragment).commit();
+        }
     }
 
     @Override

@@ -19,6 +19,8 @@ public interface FilmListContract {
 
         void aboutFilmFragment(Film film);
 
+        void detachAboutFragment();
+
         void addData(FilmModal filmModal);
     }
 

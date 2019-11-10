@@ -36,6 +36,7 @@ public class FilmPresenter implements FilmListContract.Presenter {
     public void onFilmClicked(Film film) {
         view.progressBarVisible();
         view.aboutFilmFragment(film);
+        view.detachAboutFragment();
         view.progressBarGone();
     }
 
