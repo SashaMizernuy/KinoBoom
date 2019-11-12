@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     public void displayingAdapter(FilmModal filmModal) {
         recyclerAdapter = new RecyclerAdapter(filmList,
                 (film)-> {
-                        presenter.onFilmClicked(new DetailFragment(),film);
+                        presenter.onFilmClicked(film);
                 },
                 (film,position)-> {
                         presenter.onFilmLongClicked(film,position);
@@ -98,14 +98,14 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void aboutFilmFragment(DetailFragment fragment, Film film) {
+    public void aboutFilmFragment(Film film) {
+        DetailFragment myObj = new DetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("params", film.getOverview());
-        fragment.setArguments(bundle);
-        fragment.atachPresenter(presenter);
+        myObj.setArguments(bundle);
         getSupportFragmentManager().
                 beginTransaction().
-                replace(R.id.listFragment,fragment).
+                replace(R.id.listFragment,myObj).
                 addToBackStack(null).
                 commit();
     }

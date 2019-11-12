@@ -1,6 +1,5 @@
 package com.example.kinoboom.presenter;
 
-import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 
@@ -17,7 +16,7 @@ public interface FilmListContract {
 
         void deleteItemDialog(Film film,int position);
 
-        void aboutFilmFragment(DetailFragment fragment, Film film);
+        void aboutFilmFragment(Film film);
 
         void detachAboutFragment();
 
@@ -26,6 +25,8 @@ public interface FilmListContract {
 
     interface Presenter{
         void onViewCreated();
+
+        void onFilmClicked(Film film);
 
         void onFilmLongClicked(Film film,int position);
     }
