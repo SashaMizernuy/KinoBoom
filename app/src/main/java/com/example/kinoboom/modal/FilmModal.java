@@ -10,7 +10,7 @@ public class FilmModal {
     @Expose
     private Integer page;
     @Expose
-    private Integer total_results;
+    private Integer totalResults;
     @Expose
     private Dates dates;
     @SerializedName("total_pages")
@@ -34,11 +34,11 @@ public class FilmModal {
     }
 
     public Integer getTotalResults() {
-        return total_results;
+        return totalResults;
     }
 
     public void setTotalResults(Integer totalResults) {
-        this.total_results = totalResults;
+        this.totalResults = totalResults;
     }
 
     public Dates getDates() {
@@ -105,7 +105,7 @@ public class FilmModal {
         private String originalTitle;
         @SerializedName("genre_ids")
         @Expose
-        private List<Integer> mGenreIds = null;
+        private List<Integer> genreIds = null;
         @Expose
         private String title;
         @SerializedName("vote_average")
@@ -190,11 +190,11 @@ public class FilmModal {
         }
 
         public List<Integer> getGenreIds() {
-            return mGenreIds;
+            return genreIds;
         }
 
         public void setGenreIds(List<Integer> genreIds) {
-            this.mGenreIds = genreIds;
+            this.genreIds = genreIds;
         }
 
         public String getTitle() {
