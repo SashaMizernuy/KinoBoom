@@ -24,6 +24,7 @@ public class FilmPresenter implements FilmListContract.Presenter {
                 view.displayingAdapter(filmModal);
                 view.progressBarGone();
             }
+
             @Override
             public void error(String error) {
                 view.error(error);

@@ -13,9 +13,9 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_detail, container, false);
+        View v = inflater.inflate(R.layout.fragment_detail, container, false);
         final TextView updateBox = (TextView) v.findViewById(R.id.textContainer);
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             updateBox.setVisibility(View.VISIBLE);
             String text = getArguments().getString("params");
             updateBox.setText(text);

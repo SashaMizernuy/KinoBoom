@@ -1,14 +1,12 @@
 package com.example.kinoboom.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     public void displayingAdapter(FilmModal filmModal) {
         recyclerAdapter = new RecyclerAdapter(filmList,
                 (film)-> {
-                        presenter.onFilmClicked(film);
+                        presenter.onFilmClicked(new DetailFragment(),film);
                 },
                 (film,position)-> {
                         presenter.onFilmLongClicked(film,position);
@@ -100,14 +98,14 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     }
 
     @Override
-    public void aboutFilmFragment(Film film) {
-        DetailFragment myObj = new DetailFragment();
+    public void aboutFilmFragment(DetailFragment fragment, Film film) {
         Bundle bundle = new Bundle();
         bundle.putString("params", film.getOverview());
-        myObj.setArguments(bundle);
+        fragment.setArguments(bundle);
+        fragment.atachPresenter(presenter);
         getSupportFragmentManager().
                 beginTransaction().
-                replace(R.id.listFragment, myObj).
+                replace(R.id.listFragment,fragment).
                 addToBackStack(null).
                 commit();
     }
