@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment;
 import com.example.kinoboom.R;
 
 
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements FragmentNavigation.View {
+
+    protected FragmentNavigation.Presenter navigationPresenter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -21,5 +24,11 @@ public class DetailFragment extends Fragment {
             updateBox.setText(text);
         }
         return v;
+    }
+
+
+    @Override
+    public void atachPresenter(FragmentNavigation.Presenter presenter) {
+        navigationPresenter = presenter;
     }
 }

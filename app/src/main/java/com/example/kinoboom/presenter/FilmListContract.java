@@ -4,7 +4,6 @@ import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 
-
 public interface FilmListContract {
 
     interface View{
