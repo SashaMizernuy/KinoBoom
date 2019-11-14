@@ -7,6 +7,6 @@ public interface DeatailFragmentContract {
     }
 
     interface Presenter {
-        void onFilmClicked();
+        void isShowOverview();
     }
 }

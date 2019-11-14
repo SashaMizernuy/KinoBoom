@@ -24,7 +24,7 @@ public class DetailFragment extends Fragment implements DeatailFragmentContract.
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, v);
         detailPresenter = new DetailPresenter(this);
-        detailPresenter.onFilmClicked();
+        detailPresenter.isShowOverview();
         return v;
     }
 
