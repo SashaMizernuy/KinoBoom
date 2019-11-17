@@ -28,8 +28,8 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements FilmListContract.View {
 
-    @Inject
-    public FilmViewModal filmViewModal;
+//    @Inject
+//    public FilmViewModal filmViewModal;
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getAppComponent().inject(this);
+        //getAppComponent().inject(this);
         initialView();
     }
 
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements FilmListContract.
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         filmList = new ArrayList<>();
-        presenter = new FilmPresenter(filmViewModal, this);
-        presenter.onViewCreated();
+//        presenter = new FilmPresenter(filmViewModal, this);
+//        presenter.onViewCreated();
     }
 
     @Override
