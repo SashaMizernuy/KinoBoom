@@ -24,10 +24,12 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
                 view.responseDataAdd(filmModal);
                 view.listenerAdapter();
                 view.initAdapter();
+                view.progressBarGone();
             }
 
             @Override
             public void error(String error) {
+                view.progressBarGone();
             }
         });
     }

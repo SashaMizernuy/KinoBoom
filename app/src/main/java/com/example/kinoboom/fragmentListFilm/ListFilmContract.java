@@ -13,6 +13,8 @@ public interface ListFilmContract {
         void listenerAdapter();
 
         void initAdapter();
+
+        void progressBarGone();
     }
 
     interface Presenter {
