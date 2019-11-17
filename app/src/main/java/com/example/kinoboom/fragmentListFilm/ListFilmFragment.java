@@ -7,7 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import com.example.kinoboom.R;
+import com.example.kinoboom.modal.Film;
+import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +27,7 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     ProgressBar progressBar;
 
     private ListFilmPresenter listFilmPresenter;
+    private List<Film> listFilm;
 
     public ListFilmFragment() {
     }
@@ -40,11 +45,24 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     public void initView() {
         listFilmPresenter = new ListFilmPresenter(filmViewModal,this);
         listFilmPresenter.onResponse();
+        listFilm = new ArrayList<>();
     }
 
 
     @Override
     public void progressBarVisible() {
         progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void responseDataAdd(FilmModal filmModal) {
+        for (int i = 0;i < filmModal.getResults().size();i++) {
+            FilmModal.Result filmModalResult = filmModal.getResults().get(i);
+            listFilm.add(new Film(filmModalResult.getPosterPath(),
+                    filmModalResult.getTitle(),
+                    filmModalResult.getPopularity(),
+                    filmModalResult.getReleaseDate(),
+                    filmModalResult.getOverview()));
+        }
     }
 }

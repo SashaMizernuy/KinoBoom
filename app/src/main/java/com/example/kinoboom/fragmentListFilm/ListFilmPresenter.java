@@ -20,6 +20,7 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
         filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
             @Override
             public void accept(FilmModal filmModal) {
+                view.responseDataAdd(filmModal);
             }
 
             @Override
