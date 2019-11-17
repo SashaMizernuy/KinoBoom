@@ -1,6 +1,7 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -103,10 +104,25 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
         Bundle bundle = new Bundle();
         bundle.putString("overview",film.getOverview());
         detailFragment.setArguments(bundle);
-        getActivity().getSupportFragmentManager().
+        getFragmentManager().
                 beginTransaction().
                 replace(R.id.listFragment,detailFragment).
                 addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void deleteItemDialog(Film film,int position) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(film.title)
+                .setMessage("Delete this item ?")
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    listFilm.remove(film);
+                    recyclerAdapter.notifyItemRemoved(position);
+                })
+                .setNegativeButton(android.R.string.no, (dialog, which) -> {
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

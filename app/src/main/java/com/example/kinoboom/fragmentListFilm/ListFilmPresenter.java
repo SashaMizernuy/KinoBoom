@@ -41,8 +41,6 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
 
     @Override
     public void onFilmLongClicked(Film film, int position) {
-
+        view.deleteItemDialog(film,position);
     }
-
-
 }

@@ -17,6 +17,8 @@ public interface ListFilmContract {
         void progressBarGone();
 
         void overviewFilm(Film film);
+
+        void deleteItemDialog(Film film,int position);
     }
 
     interface Presenter {
