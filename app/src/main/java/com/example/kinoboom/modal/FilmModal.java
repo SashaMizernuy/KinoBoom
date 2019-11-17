@@ -2,21 +2,16 @@ package com.example.kinoboom.modal;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
-public class FilmModal {
 
-    @SerializedName("results")
+public class FilmModal {
     @Expose
     private List<Result> results = null;
-    @SerializedName("page")
     @Expose
     private Integer page;
-    @SerializedName("total_results")
     @Expose
     private Integer totalResults;
-    @SerializedName("dates")
     @Expose
     private Dates dates;
     @SerializedName("total_pages")
@@ -63,12 +58,10 @@ public class FilmModal {
         this.totalPages = totalPages;
     }
 
-    public class Dates {
 
-        @SerializedName("maximum")
+    public class Dates {
         @Expose
         private String maximum;
-        @SerializedName("minimum")
         @Expose
         private String minimum;
 
@@ -77,7 +70,6 @@ public class FilmModal {
         }
 
         public void setMaximum(String maximum) {
-            this.maximum = maximum;
         }
 
         public String getMinimum() {
@@ -89,24 +81,20 @@ public class FilmModal {
         }
     }
 
-    public class Result {
 
-        @SerializedName("popularity")
+    public class Result {
         @Expose
         private Double popularity;
         @SerializedName("vote_count")
         @Expose
         private Integer voteCount;
-        @SerializedName("video")
         @Expose
         private Boolean video;
         @SerializedName("poster_path")
         @Expose
         private String posterPath;
-        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("adult")
         @Expose
         private Boolean adult;
         @SerializedName("backdrop_path")
@@ -121,13 +109,11 @@ public class FilmModal {
         @SerializedName("genre_ids")
         @Expose
         private List<Integer> genreIds = null;
-        @SerializedName("title")
         @Expose
         private String title;
         @SerializedName("vote_average")
         @Expose
         private Double voteAverage;
-        @SerializedName("overview")
         @Expose
         private String overview;
         @SerializedName("release_date")
@@ -245,6 +231,5 @@ public class FilmModal {
         public void setReleaseDate(String releaseDate) {
             this.releaseDate = releaseDate;
         }
-
     }
 }

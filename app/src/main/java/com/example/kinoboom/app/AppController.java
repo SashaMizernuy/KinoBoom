@@ -9,6 +9,7 @@ import com.example.kinoboom.request.FilmServiceModule;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
+
 public class AppController extends Application {
     private FilmService filmService;
     private Scheduler scheduler;
@@ -26,7 +27,6 @@ public class AppController extends Application {
         if (scheduler == null) {
             scheduler = Schedulers.io();
         }
-
         return scheduler;
     }
 
