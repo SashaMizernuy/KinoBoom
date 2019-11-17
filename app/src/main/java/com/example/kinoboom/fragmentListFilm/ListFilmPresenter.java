@@ -29,6 +29,7 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
 
             @Override
             public void error(String error) {
+                view.catchError(error);
                 view.progressBarGone();
             }
         });

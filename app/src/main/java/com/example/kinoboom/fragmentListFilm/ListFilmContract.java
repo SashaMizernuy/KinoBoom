@@ -19,6 +19,8 @@ public interface ListFilmContract {
         void overviewFilm(Film film);
 
         void deleteItemDialog(Film film,int position);
+
+        void catchError(String error);
     }
 
     interface Presenter {

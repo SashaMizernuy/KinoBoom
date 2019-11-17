@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
@@ -20,6 +21,8 @@ import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
+
 import static com.example.kinoboom.app.AppController.getAppComponent;
 
 
@@ -124,5 +127,10 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+    @Override
+    public void catchError(String error) {
+        Toasty.error(getActivity(),"Error: "+error, Toast.LENGTH_LONG).show();
     }
 }
