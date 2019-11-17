@@ -42,4 +42,9 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
         listFilmPresenter.onResponse();
     }
 
+
+    @Override
+    public void progressBarVisible() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
 }
