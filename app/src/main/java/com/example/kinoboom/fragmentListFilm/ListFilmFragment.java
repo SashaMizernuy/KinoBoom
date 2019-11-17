@@ -106,7 +106,7 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
         detailFragment.setArguments(bundle);
         getFragmentManager().
                 beginTransaction().
-                replace(R.id.listFragment,detailFragment).
+                add(R.id.listFragment,detailFragment).
                 addToBackStack(null)
                 .commit();
     }
