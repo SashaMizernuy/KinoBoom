@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import com.example.kinoboom.R;
+import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
@@ -94,5 +95,18 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     @Override
     public void progressBarGone() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void overviewFilm(Film film) {
+        DetailFragment detailFragment = new DetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("overview",film.getOverview());
+        detailFragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.listFragment,detailFragment).
+                addToBackStack(null)
+                .commit();
     }
 }

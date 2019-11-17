@@ -32,7 +32,7 @@ public class DetailFragment extends Fragment implements DeatailFragmentContract.
     public void overviewFilm() {
         if (getArguments() != null) {
             updateBox.setVisibility(View.VISIBLE);
-            String text = getArguments().getString("params");
+            String text = getArguments().getString("overview");
             updateBox.setText(text);
         }
     }

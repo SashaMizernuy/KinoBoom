@@ -36,7 +36,7 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
 
     @Override
     public void onFilmClicked(Film film) {
-
+        view.overviewFilm(film);
     }
 
     @Override

@@ -15,6 +15,8 @@ public interface ListFilmContract {
         void initAdapter();
 
         void progressBarGone();
+
+        void overviewFilm(Film film);
     }
 
     interface Presenter {
