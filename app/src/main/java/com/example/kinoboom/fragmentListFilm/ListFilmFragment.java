@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import com.example.kinoboom.R;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
+import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
 import com.example.kinoboom.viewModal.FilmViewModal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
 
     private ListFilmPresenter listFilmPresenter;
     private List<Film> listFilm;
+    private RecyclerAdapter recyclerAdapter;
 
     public ListFilmFragment() {
     }
@@ -65,4 +67,17 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
                     filmModalResult.getOverview()));
         }
     }
+
+    @Override
+    public void listenerAdapter() {
+        recyclerAdapter = new RecyclerAdapter(listFilm,
+                (film)-> {
+                    listFilmPresenter.onFilmClicked(film);
+                },
+                (film, position) -> {
+                    listFilmPresenter.onFilmLongClicked(film,position);
+                });
+    }
+
+
 }

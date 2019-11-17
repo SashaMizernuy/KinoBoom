@@ -1,5 +1,6 @@
 package com.example.kinoboom.fragmentListFilm;
 
+import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
 
@@ -21,6 +22,8 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
             @Override
             public void accept(FilmModal filmModal) {
                 view.responseDataAdd(filmModal);
+                view.listenerAdapter();
+                
             }
 
             @Override
@@ -28,4 +31,16 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void onFilmClicked(Film film) {
+
+    }
+
+    @Override
+    public void onFilmLongClicked(Film film, int position) {
+
+    }
+
+
 }

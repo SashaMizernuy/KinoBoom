@@ -1,5 +1,6 @@
 package com.example.kinoboom.fragmentListFilm;
 
+import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 
 public interface ListFilmContract {
@@ -8,9 +9,15 @@ public interface ListFilmContract {
         void progressBarVisible();
 
         void responseDataAdd(FilmModal filmModal);
+
+        void listenerAdapter();
     }
 
     interface Presenter {
         void onResponse();
+
+        void onFilmClicked(Film film);
+
+        void onFilmLongClicked(Film film,int position);
     }
 }
