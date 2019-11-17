@@ -2,6 +2,9 @@ package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,9 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+    @BindView(R.id.listOfFilm)
+    RecyclerView recyclerView;
 
     private ListFilmPresenter listFilmPresenter;
     private List<Film> listFilm;
@@ -79,5 +85,10 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
                 });
     }
 
-
+    @Override
+    public void initAdapter() {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(recyclerAdapter);
+    }
 }

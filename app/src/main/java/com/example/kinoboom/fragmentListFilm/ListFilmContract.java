@@ -11,6 +11,8 @@ public interface ListFilmContract {
         void responseDataAdd(FilmModal filmModal);
 
         void listenerAdapter();
+
+        void initAdapter();
     }
 
     interface Presenter {

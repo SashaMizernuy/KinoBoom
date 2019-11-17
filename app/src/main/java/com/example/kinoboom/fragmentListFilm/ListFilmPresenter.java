@@ -23,7 +23,7 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
             public void accept(FilmModal filmModal) {
                 view.responseDataAdd(filmModal);
                 view.listenerAdapter();
-                
+                view.initAdapter();
             }
 
             @Override
