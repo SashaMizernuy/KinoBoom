@@ -1,6 +1,6 @@
-package com.example.kinoboom.presenter;
+package com.example.kinoboom.view;
 
-public interface FilmListContract {
+public interface MainContract {
 
     interface View{
         void startListFragment();

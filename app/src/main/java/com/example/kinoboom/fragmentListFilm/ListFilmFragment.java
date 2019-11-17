@@ -22,7 +22,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
-
 import static com.example.kinoboom.app.AppController.getAppComponent;
 
 

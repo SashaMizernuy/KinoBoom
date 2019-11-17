@@ -4,19 +4,17 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentListFilm.ListFilmFragment;
-import com.example.kinoboom.presenter.FilmListContract;
-import com.example.kinoboom.presenter.FilmPresenter;
 
 
-public class MainActivity extends AppCompatActivity implements FilmListContract.View {
+public class MainActivity extends AppCompatActivity implements MainContract.View {
 
-    private FilmPresenter presenter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        presenter=new FilmPresenter(this);
+        presenter=new MainPresenter(this);
         presenter.onFragmentInit();
     }
 
