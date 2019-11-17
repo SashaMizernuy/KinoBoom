@@ -5,11 +5,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import com.example.kinoboom.R;
 import com.example.kinoboom.viewModal.FilmViewModal;
 import javax.inject.Inject;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import static com.example.kinoboom.app.AppController.getAppComponent;
 
 
@@ -17,6 +18,9 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
 
     @Inject
     public FilmViewModal filmViewModal;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private ListFilmPresenter listFilmPresenter;
 
@@ -35,16 +39,7 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
 
     public void initView() {
         listFilmPresenter = new ListFilmPresenter(filmViewModal,this);
-
+        listFilmPresenter.onResponse();
     }
 
-    @Override
-    public void initAdapter() {
-        //initialize adapter
-    }
-
-    @Override
-    public void listFilm() {
-        //getListFilm
-    }
 }

@@ -1,6 +1,6 @@
 package com.example.kinoboom.fragmentListFilm;
 
-
+import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
 
 public class ListFilmPresenter implements ListFilmContract.Presenter {
@@ -13,13 +13,17 @@ public class ListFilmPresenter implements ListFilmContract.Presenter {
         this.view = view;
     }
 
-    @Override
-    public void isAdapterInit() {
-        view.initAdapter();
-    }
 
     @Override
-    public void isShowListFilm() {
+    public void onResponse() {
+        filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
+            @Override
+            public void accept(FilmModal filmModal) {
+            }
 
+            @Override
+            public void error(String error) {
+            }
+        });
     }
 }
