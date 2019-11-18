@@ -36,6 +36,8 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     @BindView(R.id.listOfFilm)
     RecyclerView recyclerView;
 
+    View view;
+
     private ListFilmPresenter listFilmPresenter;
     private List<Film> listFilm;
     private RecyclerAdapter recyclerAdapter;
@@ -46,11 +48,13 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_list_film, container, false);
-        ButterKnife.bind(this, v);
-        getAppComponent().inject(this);
-        initView();
-        return v;
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_list_film, container, false);
+            ButterKnife.bind(this, view);
+            getAppComponent().inject(this);
+            initView();
+        }
+        return view;
     }
 
     public void initView() {
@@ -108,9 +112,9 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
         detailFragment.setArguments(bundle);
         getFragmentManager().
                 beginTransaction().
-                add(R.id.listFragment,detailFragment).
-                addToBackStack(null)
-                .commit();
+                replace(R.id.listFragment,detailFragment).
+                addToBackStack(null).
+                commit();
     }
 
     @Override
