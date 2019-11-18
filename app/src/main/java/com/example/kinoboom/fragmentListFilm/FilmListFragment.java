@@ -53,12 +53,12 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
             ButterKnife.bind(this, view);
             getAppComponent().inject(this);
             listFilm = new ArrayList<>();
-            initPresenter();
+            initFilmListPresenter();
         }
         return view;
     }
 
-    public void initPresenter() {
+    public void initFilmListPresenter() {
         filmListPresenter = new FilmListPresenter(filmViewModal,this);
         filmListPresenter.getResponse();
     }
