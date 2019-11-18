@@ -2,6 +2,7 @@ package com.example.kinoboom.view;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentListFilm.ListFilmFragment;
 
@@ -20,11 +21,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void startListFragment() {
-        ListFilmFragment listFilmFragment = new ListFilmFragment();
-        getSupportFragmentManager().
-                beginTransaction().
-                replace(R.id.listFragment,listFilmFragment).
-                addToBackStack(null).
-                commit();
+        Fragment fragmentTag =getSupportFragmentManager().findFragmentByTag("listFilmTag");
+        if (fragmentTag==null) {
+            getSupportFragmentManager().
+                    beginTransaction().
+                    add(R.id.listFragment, new ListFilmFragment(), "listFilmTag").
+                    commit();
+        }
     }
 }
