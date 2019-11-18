@@ -20,7 +20,7 @@ public interface FilmListContract {
 
         void deleteItemDialog(Film film,int position);
 
-        void catchError(String error);
+        void showToast(String error);
     }
 
     interface Presenter {

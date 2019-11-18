@@ -29,7 +29,7 @@ public class FilmListPresenter implements FilmListContract.Presenter {
 
             @Override
             public void error(String error) {
-                view.catchError(error);
+                view.showToast(error);
                 view.progressBarGone();
             }
         });

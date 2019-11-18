@@ -133,7 +133,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     }
 
     @Override
-    public void catchError(String error) {
+    public void showToast(String error) {
         Toasty.error(getActivity(),"Error: "+error, Toast.LENGTH_LONG).show();
     }
 }
