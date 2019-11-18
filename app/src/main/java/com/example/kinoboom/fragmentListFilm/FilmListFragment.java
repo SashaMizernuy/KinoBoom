@@ -25,7 +25,7 @@ import es.dmoral.toasty.Toasty;
 import static com.example.kinoboom.app.AppController.getAppComponent;
 
 
-public class ListFilmFragment extends Fragment implements ListFilmContract.View {
+public class FilmListFragment extends Fragment implements FilmListContract.View {
 
     @Inject
     public FilmViewModal filmViewModal;
@@ -38,11 +38,11 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
 
     View view;
 
-    private ListFilmPresenter listFilmPresenter;
+    private FilmListPresenter filmListPresenter;
     private List<Film> listFilm;
     private RecyclerAdapter recyclerAdapter;
 
-    public ListFilmFragment() {
+    public FilmListFragment() {
     }
 
     @Override
@@ -58,8 +58,8 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     }
 
     public void initView() {
-        listFilmPresenter = new ListFilmPresenter(filmViewModal,this);
-        listFilmPresenter.onResponse();
+        filmListPresenter = new FilmListPresenter(filmViewModal,this);
+        filmListPresenter.onResponse();
         listFilm = new ArrayList<>();
     }
 
@@ -85,10 +85,10 @@ public class ListFilmFragment extends Fragment implements ListFilmContract.View 
     public void listenerAdapter() {
         recyclerAdapter = new RecyclerAdapter(listFilm,
                 (film)-> {
-                    listFilmPresenter.onFilmClicked(film);
+                    filmListPresenter.onFilmClicked(film);
                 },
                 (film, position) -> {
-                    listFilmPresenter.onFilmLongClicked(film,position);
+                    filmListPresenter.onFilmLongClicked(film,position);
                 });
     }
 

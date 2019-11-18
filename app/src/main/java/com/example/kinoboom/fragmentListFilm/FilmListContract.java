@@ -3,7 +3,7 @@ package com.example.kinoboom.fragmentListFilm;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 
-public interface ListFilmContract {
+public interface FilmListContract {
 
     interface View {
         void progressBarVisible();

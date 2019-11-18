@@ -4,12 +4,12 @@ import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
 
-public class ListFilmPresenter implements ListFilmContract.Presenter {
+public class FilmListPresenter implements FilmListContract.Presenter {
 
     private final FilmViewModal filmViewModal;
-    private final ListFilmContract.View view;
+    private final FilmListContract.View view;
 
-    public ListFilmPresenter(FilmViewModal filmViewModal,ListFilmContract.View view) {
+    public FilmListPresenter(FilmViewModal filmViewModal, FilmListContract.View view) {
         this.filmViewModal = filmViewModal;
         this.view = view;
     }
