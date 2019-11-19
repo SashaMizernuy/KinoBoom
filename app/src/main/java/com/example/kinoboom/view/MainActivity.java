@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     public void initMainPresenter(){
         mainPresenter=new MainPresenter(this);
-        mainPresenter.isMainPresenterCreated();
+        mainPresenter.mainPresenterIsCreated();
     }
 
     @Override
