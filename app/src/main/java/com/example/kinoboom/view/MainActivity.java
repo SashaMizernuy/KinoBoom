@@ -9,7 +9,7 @@ import com.example.kinoboom.fragmentListFilm.FilmListFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
-    private MainPresenter presenter;
+    private MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     public void initMainPresenter(){
-        presenter=new MainPresenter(this);
-        presenter.fragmentLaunched();
+        mainPresenter=new MainPresenter(this);
+        mainPresenter.isMainPresenterCreated();
     }
 
     @Override
-    public void startListFragment() {
+    public void showFilmListFragment() {
         Fragment fragmentTag =getSupportFragmentManager().findFragmentByTag("listFilmTag");
         if (fragmentTag==null) {
             getSupportFragmentManager()

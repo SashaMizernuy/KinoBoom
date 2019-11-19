@@ -3,10 +3,10 @@ package com.example.kinoboom.view;
 public interface MainContract {
 
     interface View{
-        void startListFragment();
+        void showFilmListFragment();
     }
 
     interface Presenter{
-       void fragmentLaunched();
+       void isMainPresenterCreated();
     }
 }

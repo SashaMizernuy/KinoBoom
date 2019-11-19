@@ -8,7 +8,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void fragmentLaunched() {
-        view.startListFragment();
+    public void isMainPresenterCreated() {
+        view.showFilmListFragment();
     }
 }
