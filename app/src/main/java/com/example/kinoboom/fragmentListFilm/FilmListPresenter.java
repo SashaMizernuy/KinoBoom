@@ -14,9 +14,8 @@ public class FilmListPresenter implements FilmListContract.Presenter {
         this.view = view;
     }
 
-
     @Override
-    public void getResponse() {
+    public void filmListPresenterIsCreated() {
         view.progressBarVisible();
         filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
             @Override

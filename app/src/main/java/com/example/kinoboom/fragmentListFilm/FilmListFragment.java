@@ -60,7 +60,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     public void initFilmListPresenter() {
         filmListPresenter = new FilmListPresenter(filmViewModal,this);
-        filmListPresenter.getResponse();
+        filmListPresenter.filmListPresenterIsCreated();
     }
 
 

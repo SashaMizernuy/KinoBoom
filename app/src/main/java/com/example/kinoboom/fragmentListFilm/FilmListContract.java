@@ -24,7 +24,7 @@ public interface FilmListContract {
     }
 
     interface Presenter {
-        void getResponse();
+        void filmListPresenterIsCreated();
 
         void onFilmClicked(Film film);
 
