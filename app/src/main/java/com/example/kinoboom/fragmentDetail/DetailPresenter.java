@@ -10,7 +10,7 @@ public class DetailPresenter implements DeatailFragmentContract.Presenter {
     }
 
     @Override
-    public void isShowOverview() {
+    public void detailPresenterIsCreated() {
         view.overviewFilm();
     }
 }

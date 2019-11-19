@@ -29,7 +29,7 @@ public class DetailFragment extends Fragment implements DeatailFragmentContract.
 
     public void initDetailPresenter(){
         detailPresenter = new DetailPresenter(this);
-        detailPresenter.isShowOverview();
+        detailPresenter.detailPresenterIsCreated();
     }
 
     @Override
