@@ -23,9 +23,13 @@ public class DetailFragment extends Fragment implements DeatailFragmentContract.
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, v);
+        initDetailPresenter();
+        return v;
+    }
+
+    public void initDetailPresenter(){
         detailPresenter = new DetailPresenter(this);
         detailPresenter.isShowOverview();
-        return v;
     }
 
     @Override
