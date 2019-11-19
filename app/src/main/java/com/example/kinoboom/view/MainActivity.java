@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void startListFragment() {
         Fragment fragmentTag =getSupportFragmentManager().findFragmentByTag("listFilmTag");
         if (fragmentTag==null) {
-            getSupportFragmentManager().
-                    beginTransaction().
-                    add(R.id.listFragment, new FilmListFragment(), "listFilmTag").
-                    commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.listFragment, new FilmListFragment(), "listFilmTag")
+                    .commit();
         }
     }
 }
