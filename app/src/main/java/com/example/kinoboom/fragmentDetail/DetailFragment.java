@@ -10,10 +10,9 @@ import com.example.kinoboom.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+public class DetailFragment extends Fragment implements DeatailContract.View {
 
-public class DetailFragment extends Fragment implements DeatailFragmentContract.View {
-
-    protected DeatailFragmentContract.Presenter detailPresenter;
+    protected DeatailContract.Presenter presenter;
 
     @BindView(R.id.textContainer)
     TextView updateBox;
@@ -28,8 +27,8 @@ public class DetailFragment extends Fragment implements DeatailFragmentContract.
     }
 
     public void initDetailPresenter(){
-        detailPresenter = new DetailPresenter(this);
-        detailPresenter.detailPresenterIsCreated();
+        presenter = new DetailPresenter(this);
+        presenter.onViewCreated();
     }
 
     @Override
