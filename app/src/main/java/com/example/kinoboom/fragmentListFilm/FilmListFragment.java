@@ -1,31 +1,28 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
 import com.example.kinoboom.viewModal.FilmViewModal;
-import java.util.ArrayList;
-import java.util.List;
-import javax.inject.Inject;
+import static com.example.kinoboom.app.AppController.getAppComponent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
-import static com.example.kinoboom.app.AppController.getAppComponent;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
 
 public class FilmListFragment extends Fragment implements FilmListContract.View {
 
@@ -38,9 +35,8 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     @BindView(R.id.listOfFilm)
     RecyclerView recyclerView;
 
-    View view;
-
-    private FilmListPresenter filmListPresenter;
+    private View view;
+    private FilmListPresenter presenter;
     private List<Film> listFilm;
     private RecyclerAdapter recyclerAdapter;
 
@@ -61,10 +57,9 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     }
 
     public void initFilmListPresenter() {
-        filmListPresenter = new FilmListPresenter(filmViewModal,this);
-        filmListPresenter.filmListPresenterIsCreated();
+        presenter = new FilmListPresenter(filmViewModal,this);
+        presenter.onViewCreated();
     }
-
 
     @Override
     public void progressBarVisible() {
@@ -87,10 +82,10 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     public void listenerAdapter() {
         recyclerAdapter = new RecyclerAdapter(listFilm,
                 (film)-> {
-                    filmListPresenter.onFilmClicked(film);
+                    presenter.onFilmClicked(film);
                 },
                 (film, position) -> {
-                    filmListPresenter.onFilmLongClicked(film,position);
+                    presenter.onFilmLongClicked(film,position);
                 });
     }
 
@@ -115,8 +110,8 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.listFragment,detailFragment)
-                .addToBackStack(null).
-                commit();
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
@@ -136,7 +131,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void showToast(String error) {
-        Toasty.error(getActivity(),"Error: "+error.substring(error.lastIndexOf(":"))
-                , Toast.LENGTH_LONG).show();
+        Toasty.error(getActivity(),"Error: " + error.substring(error.lastIndexOf(":")),
+                 Toast.LENGTH_LONG).show();
     }
 }
