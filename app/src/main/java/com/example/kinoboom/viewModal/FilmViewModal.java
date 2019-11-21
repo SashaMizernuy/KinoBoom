@@ -7,7 +7,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import java.util.Collections;
 
-
 public class FilmViewModal  {
 
     private final FilmService filmService;
