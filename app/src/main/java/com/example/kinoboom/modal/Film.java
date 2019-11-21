@@ -1,7 +1,10 @@
 package com.example.kinoboom.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Film {
+public class Film implements Parcelable {
+
          public String posterPath;
          public String title;
          public Double popularity;
@@ -16,6 +19,44 @@ public class Film {
         this.popularity = popularity;
         this.releaseDate = releaseDate;
         this.overview = overview;
+    }
+
+    protected Film(Parcel in) {
+        posterPath = in.readString();
+        title = in.readString();
+        if (in.readByte() == 0) {
+            popularity = null;
+        } else {
+            popularity = in.readDouble();
+        }
+        releaseDate = in.readString();
+        overview = in.readString();
+    }
+
+    public static final Creator<Film> CREATOR = new Creator<Film>() {
+        @Override
+        public Film createFromParcel(Parcel in) {
+            return new Film(in);
+        }
+
+        @Override
+        public Film[] newArray(int size) {
+            return new Film[size];
+        }
+    };
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(posterPath);
+        parcel.writeString(title);
+        if (popularity == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(popularity);
+        }
+        parcel.writeString(releaseDate);
+        parcel.writeString(overview);
     }
 
     public String getPosterPath() {
@@ -56,4 +97,9 @@ public class Film {
     public void setOverview(String overview) {
          this.overview = overview;
      }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +51,18 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
             view = inflater.inflate(R.layout.fragment_list_film, container, false);
             ButterKnife.bind(this, view);
             getAppComponent().inject(this);
-            listFilm = new ArrayList<>();
+            checkSavedState(savedInstanceState);
             initFilmListPresenter();
         }
         return view;
+    }
+
+    public void checkSavedState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            listFilm = savedInstanceState.getParcelableArrayList("FilmList");
+        } else {
+            listFilm = new ArrayList<>();
+        }
     }
 
     public void initFilmListPresenter() {
@@ -99,6 +108,12 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     @Override
     public void progressBarGone() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelableArrayList("FilmList", (ArrayList<? extends Parcelable>) listFilm);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
