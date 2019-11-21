@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +136,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void showToast(String error) {
-        Toasty.error(getActivity(),"Error: "+error, Toast.LENGTH_LONG).show();
+        Toasty.error(getActivity(),"Error: "+error.substring(error.lastIndexOf(":"))
+                , Toast.LENGTH_LONG).show();
     }
 }
