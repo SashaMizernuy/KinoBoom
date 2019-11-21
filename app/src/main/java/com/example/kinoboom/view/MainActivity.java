@@ -9,7 +9,7 @@ import com.example.kinoboom.fragmentListFilm.FilmListFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
-    private MainPresenter mainPresenter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     public void initMainPresenter(){
-        mainPresenter=new MainPresenter(this);
-        mainPresenter.mainPresenterIsCreated();
+        presenter=new MainPresenter(this);
+        presenter.onViewCreated();
     }
 
     @Override
