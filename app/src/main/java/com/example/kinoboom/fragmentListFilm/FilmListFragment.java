@@ -48,9 +48,6 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     private List<Film> listFilm;
     private RecyclerAdapter recyclerAdapter;
 
-    public FilmListFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -146,6 +143,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                     listFilm.remove(film);
                     recyclerAdapter.notifyItemRemoved(position);
+                    recyclerAdapter.notifyItemRangeChanged(position, listFilm.size());
                 })
                 .setNegativeButton(android.R.string.no, (dialog, which) -> {
                 })
