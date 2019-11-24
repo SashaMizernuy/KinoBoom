@@ -1,28 +1,35 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
 import com.example.kinoboom.viewModal.FilmViewModal;
+
+import org.parceler.Parcels;
+
 import static com.example.kinoboom.app.AppController.getAppComponent;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
 
 public class FilmListFragment extends Fragment implements FilmListContract.View {
@@ -59,14 +66,14 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     public void checkSavedState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            listFilm = savedInstanceState.getParcelableArrayList("FilmList");
+            listFilm = Parcels.unwrap(savedInstanceState.getParcelable("FilmList"));
         } else {
             listFilm = new ArrayList<>();
         }
     }
 
     public void initFilmListPresenter() {
-        presenter = new FilmListPresenter(filmViewModal,this);
+        presenter = new FilmListPresenter(filmViewModal, this);
         presenter.onViewCreated();
     }
 
@@ -77,7 +84,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void responseDataAdd(FilmModal filmModal) {
-        for (int i = 0;i < filmModal.getResults().size();i++) {
+        for (int i = 0; i < filmModal.getResults().size(); i++) {
             FilmModal.Result filmModalResult = filmModal.getResults().get(i);
             listFilm.add(new Film(filmModalResult.getPosterPath(),
                     filmModalResult.getTitle(),
@@ -90,11 +97,11 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     @Override
     public void listenerAdapter() {
         recyclerAdapter = new RecyclerAdapter(listFilm,
-                (film)-> {
+                (film) -> {
                     presenter.onFilmClicked(film);
                 },
                 (film, position) -> {
-                    presenter.onFilmLongClicked(film,position);
+                    presenter.onFilmLongClicked(film, position);
                 });
     }
 
@@ -112,7 +119,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelableArrayList("FilmList", (ArrayList<? extends Parcelable>) listFilm);
+        savedInstanceState.putParcelable("FilmList", Parcels.wrap(listFilm));
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -120,17 +127,17 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     public void overviewFilm(Film film) {
         DetailFragment detailFragment = new DetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("overview",film.getOverview());
+        bundle.putString("overview", film.getOverview());
         detailFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.listFragment,detailFragment)
+                .replace(R.id.listFragment, detailFragment)
                 .addToBackStack(null)
                 .commit();
     }
 
     @Override
-    public void deleteItemDialog(Film film,int position) {
+    public void deleteItemDialog(Film film, int position) {
         new AlertDialog.Builder(getActivity())
                 .setTitle(film.title)
                 .setMessage("Delete this item ?")
@@ -146,7 +153,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void showToast(String error) {
-        Toasty.error(getActivity(),"Error: " + error.substring(error.lastIndexOf(":")),
-                 Toast.LENGTH_LONG).show();
+        Toasty.error(getActivity(), "Error: " + error.substring(error.lastIndexOf(":")),
+                Toast.LENGTH_LONG).show();
     }
 }
