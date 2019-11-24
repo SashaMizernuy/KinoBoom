@@ -18,9 +18,9 @@ public interface FilmListContract {
 
         void overviewFilm(Film film);
 
-        void deleteItemDialog(Film film,int position);
+        void deleteItemDialog(Film film, int position);
 
-        void showToast(String error);
+        void showToast(String text);
     }
 
     interface Presenter {
@@ -28,6 +28,6 @@ public interface FilmListContract {
 
         void onFilmClicked(Film film);
 
-        void onFilmLongClicked(Film film,int position);
+        void onFilmLongClicked(Film film, int position);
     }
 }

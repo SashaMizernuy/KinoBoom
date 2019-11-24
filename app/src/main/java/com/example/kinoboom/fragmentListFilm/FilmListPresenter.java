@@ -27,8 +27,8 @@ public class FilmListPresenter implements FilmListContract.Presenter {
             }
 
             @Override
-            public void error(String error) {
-                view.showToast(error);
+            public void error(String text) {
+                view.showToast(text);
                 view.progressBarGone();
             }
         });
@@ -41,6 +41,6 @@ public class FilmListPresenter implements FilmListContract.Presenter {
 
     @Override
     public void onFilmLongClicked(Film film, int position) {
-        view.deleteItemDialog(film,position);
+        view.deleteItemDialog(film, position);
     }
 }

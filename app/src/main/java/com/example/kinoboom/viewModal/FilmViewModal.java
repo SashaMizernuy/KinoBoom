@@ -2,12 +2,14 @@ package com.example.kinoboom.viewModal;
 
 import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.request.FilmService;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
 import java.util.Collections;
 
-public class FilmViewModal  {
+public class FilmViewModal {
 
     private final FilmService filmService;
 
@@ -17,7 +19,8 @@ public class FilmViewModal  {
 
     public interface CallbackInterface {
         void accept(FilmModal filmModal);
-        void error(String error);
+
+        void error(String text);
     }
 
     public Disposable getCallData(CallbackInterface callback) {
@@ -25,12 +28,13 @@ public class FilmViewModal  {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(filmModal -> {
-                        sortData(filmModal);
-                        callback.accept(filmModal);
-                },throwable -> callback.error(throwable.getMessage()));
+                    sortData(filmModal);
+                    callback.accept(filmModal);
+                }, throwable -> callback.error(throwable.getMessage()
+                        .substring(throwable.getMessage().lastIndexOf(":"))));
     }
 
     public void sortData(FilmModal filmModal) {
-         Collections.sort(filmModal.getResults(), (result, t1) -> result.getTitle().compareTo(t1.getTitle()));
+        Collections.sort(filmModal.getResults(), (result, t1) -> result.getTitle().compareTo(t1.getTitle()));
     }
 }
