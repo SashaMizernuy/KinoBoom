@@ -84,13 +84,15 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void responseDataAdd(FilmModal filmModal) {
-        for (int i = 0; i < filmModal.getResults().size(); i++) {
-            FilmModal.Result filmModalResult = filmModal.getResults().get(i);
-            listFilm.add(new Film(filmModalResult.getPosterPath(),
-                    filmModalResult.getTitle(),
-                    filmModalResult.getPopularity(),
-                    filmModalResult.getReleaseDate(),
-                    filmModalResult.getOverview()));
+        if (listFilm.size() == 0) {
+            for (int i = 0; i < filmModal.getResults().size(); i++) {
+                FilmModal.Result filmModalResult = filmModal.getResults().get(i);
+                listFilm.add(new Film(filmModalResult.getPosterPath(),
+                        filmModalResult.getTitle(),
+                        filmModalResult.getPopularity(),
+                        filmModalResult.getReleaseDate(),
+                        filmModalResult.getOverview()));
+            }
         }
     }
 
