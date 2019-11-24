@@ -1,12 +1,13 @@
 package com.example.kinoboom.view;
 
+
 public interface MainContract {
 
-    interface View{
+    interface View {
         void showFilmListFragment();
     }
 
-    interface Presenter{
-       void onViewCreated();
+    interface Presenter {
+        void onViewCreated();
     }
 }

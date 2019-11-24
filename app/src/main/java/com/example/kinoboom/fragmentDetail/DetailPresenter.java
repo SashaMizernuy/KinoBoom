@@ -1,5 +1,6 @@
 package com.example.kinoboom.fragmentDetail;
 
+
 public class DetailPresenter implements DeatailContract.Presenter {
 
     private final DeatailContract.View view;

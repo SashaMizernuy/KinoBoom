@@ -2,6 +2,7 @@ package com.example.kinoboom.modal;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 
@@ -58,7 +59,6 @@ public class FilmModal {
         this.totalPages = totalPages;
     }
 
-
     public class Dates {
         @Expose
         private String maximum;
@@ -80,7 +80,6 @@ public class FilmModal {
             this.minimum = minimum;
         }
     }
-
 
     public class Result {
         @Expose

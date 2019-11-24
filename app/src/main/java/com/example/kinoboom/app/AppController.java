@@ -2,25 +2,32 @@ package com.example.kinoboom.app;
 
 import android.app.Application;
 import android.content.Context;
+
 import com.example.kinoboom.component.AppComponent;
 import com.example.kinoboom.component.DaggerAppComponent;
 import com.example.kinoboom.request.FilmService;
 import com.example.kinoboom.request.FilmServiceModule;
+
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
 
 public class AppController extends Application {
+
+    private static AppComponent appComponent;
     private FilmService filmService;
     private Scheduler scheduler;
-    private static AppComponent appComponent;
 
-    private static AppController get(Context context){
+    private static AppController get(Context context) {
         return (AppController) context.getApplicationContext();
     }
 
     public static AppController create(Context context) {
         return AppController.get(context);
+    }
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
     }
 
     public Scheduler subscribeScheduler() {
@@ -42,10 +49,6 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         appComponent = buildAppComponent();
-    }
-
-    public static AppComponent getAppComponent() {
-        return appComponent;
     }
 
     public AppComponent buildAppComponent() {

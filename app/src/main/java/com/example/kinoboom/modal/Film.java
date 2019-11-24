@@ -2,6 +2,7 @@ package com.example.kinoboom.modal;
 
 import org.parceler.Parcel;
 
+
 @Parcel
 public class Film {
 

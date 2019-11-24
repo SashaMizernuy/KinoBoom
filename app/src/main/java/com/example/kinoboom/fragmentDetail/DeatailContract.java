@@ -1,9 +1,10 @@
 package com.example.kinoboom.fragmentDetail;
 
+
 public interface DeatailContract {
 
     interface View {
-       void overviewFilm();
+        void overviewFilm();
     }
 
     interface Presenter {
