@@ -1,14 +1,18 @@
 package com.example.kinoboom.fragmentListFilm;
 
+import android.os.Bundle;
+
 import com.example.kinoboom.modal.Film;
-import com.example.kinoboom.modal.FilmModal;
+
+import java.util.List;
+
 
 public interface FilmListContract {
 
     interface View {
         void progressBarVisible();
 
-        void responseDataAdd(FilmModal filmModal);
+        void responseDataAdd(List<Film> responceList);
 
         void listenerAdapter();
 

@@ -1,8 +1,10 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import com.example.kinoboom.modal.Film;
-import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.viewModal.FilmViewModal;
+
+import java.util.List;
+
 
 public class FilmListPresenter implements FilmListContract.Presenter {
 
@@ -19,8 +21,8 @@ public class FilmListPresenter implements FilmListContract.Presenter {
         view.progressBarVisible();
         filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
             @Override
-            public void accept(FilmModal filmModal) {
-                view.responseDataAdd(filmModal);
+            public void accept(List<Film> responceList) {
+                view.responseDataAdd(responceList);
                 view.listenerAdapter();
                 view.initAdapter();
                 view.progressBarGone();

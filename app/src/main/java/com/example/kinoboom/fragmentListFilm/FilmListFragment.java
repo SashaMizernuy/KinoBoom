@@ -15,22 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kinoboom.R;
 import com.example.kinoboom.fragmentDetail.DetailFragment;
 import com.example.kinoboom.modal.Film;
-import com.example.kinoboom.modal.FilmModal;
 import com.example.kinoboom.recyclerAdapter.RecyclerAdapter;
 import com.example.kinoboom.viewModal.FilmViewModal;
 
 import org.parceler.Parcels;
 
-import static com.example.kinoboom.app.AppController.getAppComponent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.example.kinoboom.app.AppController.getAppComponent;
 
-import javax.inject.Inject;
 
 public class FilmListFragment extends Fragment implements FilmListContract.View {
 
@@ -80,16 +80,9 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     }
 
     @Override
-    public void responseDataAdd(FilmModal filmModal) {
+    public void responseDataAdd(List<Film> responceList) {
         if (listFilm.size() == 0) {
-            for (int i = 0; i < filmModal.getResults().size(); i++) {
-                FilmModal.Result filmModalResult = filmModal.getResults().get(i);
-                listFilm.add(new Film(filmModalResult.getPosterPath(),
-                        filmModalResult.getTitle(),
-                        filmModalResult.getPopularity(),
-                        filmModalResult.getReleaseDate(),
-                        filmModalResult.getOverview()));
-            }
+            listFilm.addAll(responceList);
         }
     }
 
