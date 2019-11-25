@@ -101,8 +101,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
-        if (view != null)
-            recyclerView.getLayoutManager().onRestoreInstanceState(positionOfList);
+        recyclerView.getLayoutManager().onRestoreInstanceState(positionOfList);
     }
 
     @Override
