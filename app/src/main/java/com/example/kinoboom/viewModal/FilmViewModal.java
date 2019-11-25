@@ -30,8 +30,7 @@ public class FilmViewModal {
                     sortData(filmModal);
                     getResult(filmModal);
                     callback.accept(responceList);
-                }, throwable -> callback.error(throwable.getMessage()
-                        .substring(throwable.getMessage().lastIndexOf(":"))));
+                }, throwable -> callback.error(throwable.getMessage()));
     }
 
     public void sortData(FilmModal filmModal) {
