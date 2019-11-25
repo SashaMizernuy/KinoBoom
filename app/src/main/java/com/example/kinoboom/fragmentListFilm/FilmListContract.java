@@ -1,7 +1,5 @@
 package com.example.kinoboom.fragmentListFilm;
 
-import android.os.Bundle;
-
 import com.example.kinoboom.modal.Film;
 
 import java.util.List;
