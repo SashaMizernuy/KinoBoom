@@ -83,7 +83,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     }
 
     @Override
-    public void responseDataAdd(List<Film> responceList) {
+    public void addDataResponse(List<Film> responceList) {
         if (listFilm.size() == 0) {
             listFilm.addAll(responceList);
         }

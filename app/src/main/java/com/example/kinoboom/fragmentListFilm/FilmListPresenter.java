@@ -22,7 +22,7 @@ public class FilmListPresenter implements FilmListContract.Presenter {
         filmViewModal.getCallData(new FilmViewModal.CallbackInterface() {
             @Override
             public void accept(List<Film> responceList) {
-                view.responseDataAdd(responceList);
+                view.addDataResponse(responceList);
                 view.listenerAdapter();
                 view.initAdapter();
                 view.progressBarGone();

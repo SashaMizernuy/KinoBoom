@@ -12,7 +12,7 @@ public interface FilmListContract {
     interface View {
         void progressBarVisible();
 
-        void responseDataAdd(List<Film> responceList);
+        void addDataResponse(List<Film> responceList);
 
         void listenerAdapter();
 
