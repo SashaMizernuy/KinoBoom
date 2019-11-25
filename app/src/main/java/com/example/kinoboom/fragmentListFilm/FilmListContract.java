@@ -14,8 +14,6 @@ public interface FilmListContract {
 
         void addDataResponse(List<Film> responceList);
 
-        void listenerAdapter();
-
         void initAdapter();
 
         void progressBarGone();

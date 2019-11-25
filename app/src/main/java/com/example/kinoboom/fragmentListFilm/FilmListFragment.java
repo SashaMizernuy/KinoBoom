@@ -90,7 +90,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     }
 
     @Override
-    public void listenerAdapter() {
+    public void initAdapter() {
         recyclerAdapter = new RecyclerAdapter(listFilm,
                 (film) -> {
                     presenter.onFilmClicked(film);
@@ -98,10 +98,6 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
                 (film, position) -> {
                     presenter.onFilmLongClicked(film, position);
                 });
-    }
-
-    @Override
-    public void initAdapter() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
