@@ -1,6 +1,7 @@
 package com.example.kinoboom.fragmentListFilm;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     private FilmListPresenter presenter;
     private List<Film> listFilm;
     private RecyclerAdapter recyclerAdapter;
+    private Parcelable positionOfList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +66,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     public void checkSavedState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             listFilm = Parcels.unwrap(savedInstanceState.getParcelable("FilmList"));
+            positionOfList = savedInstanceState.getParcelable("positionOfList");
         } else {
             listFilm = new ArrayList<>();
         }
@@ -102,6 +105,8 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
+        if (view != null)
+            recyclerView.getLayoutManager().onRestoreInstanceState(positionOfList);
     }
 
     @Override
@@ -112,6 +117,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putParcelable("FilmList", Parcels.wrap(listFilm));
+        savedInstanceState.putParcelable("positionOfList", recyclerView.getLayoutManager().onSaveInstanceState());
         super.onSaveInstanceState(savedInstanceState);
     }
 
