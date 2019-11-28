@@ -57,8 +57,8 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
             view = inflater.inflate(R.layout.fragment_list_film, container, false);
             ButterKnife.bind(this, view);
             getAppComponent().inject(this);
-            checkSavedState(savedInstanceState);
             initFilmListPresenter();
+            checkSavedState(savedInstanceState);
         }
         return view;
     }
@@ -84,9 +84,7 @@ public class FilmListFragment extends Fragment implements FilmListContract.View 
 
     @Override
     public void addDataResponse(List<Film> responceList) {
-        if (listFilm.size() == 0) {
-            listFilm.addAll(responceList);
-        }
+        listFilm.addAll(responceList);
     }
 
     @Override
