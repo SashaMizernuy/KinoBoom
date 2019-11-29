@@ -3,11 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentListFilm.ListFilmFragment">
+    tools:context=".fragmentListFilm.FilmListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewSongs"
+        android:id="@+id/listOfFilm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical">

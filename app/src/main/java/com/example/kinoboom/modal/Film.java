@@ -1,16 +1,23 @@
 package com.example.kinoboom.modal;
 
+import org.parceler.Parcel;
 
+
+@Parcel
 public class Film {
-         public String posterPath;
-         public String title;
-         public Double popularity;
-         public String releaseDate;
-         public String overview;
 
-     public Film(String posterPath, String title,
-                 Double popularity, String releaseDate,
-                 String overview) {
+    public String posterPath;
+    public String title;
+    public Double popularity;
+    public String releaseDate;
+    public String overview;
+
+    public Film() {
+    }
+
+    public Film(String posterPath, String title,
+                Double popularity, String releaseDate,
+                String overview) {
         this.posterPath = posterPath;
         this.title = title;
         this.popularity = popularity;
@@ -19,41 +26,42 @@ public class Film {
     }
 
     public String getPosterPath() {
-         return this.posterPath;
-     }
+        return this.posterPath;
+    }
 
     public void setPosterPath(String posterPath) {
-         this.posterPath = posterPath;
-     }
+        this.posterPath = posterPath;
+    }
 
     public String getTitle() {
-         return this.title;
-     }
+        return this.title;
+    }
 
     public void setTitle(String title) {
-         this.title = title;
-     }
+        this.title = title;
+    }
 
-    public Double getPopularity()  {
-         return this.popularity;
-     }
+    public Double getPopularity() {
+        return this.popularity;
+    }
 
     public void setPopularity(Double popularity) {
-         this.popularity = popularity;
-     }
+        this.popularity = popularity;
+    }
 
     public String getReleaseDate() {
-         return this.releaseDate;
-     }
+        return this.releaseDate;
+    }
 
     public void setReleaseDate(String releaseDate) {
-         this.releaseDate = releaseDate;
-     }
+        this.releaseDate = releaseDate;
+    }
 
     public String getOverview() {
-         return this.overview;
-     }
+        return this.overview;
+    }
+
     public void setOverview(String overview) {
-         this.overview = overview;
-     }
+        this.overview = overview;
+    }
 }

@@ -1,16 +1,16 @@
 package com.example.kinoboom.fragmentDetail;
 
 
-public class DetailPresenter implements DeatailFragmentContract.Presenter {
+public class DetailPresenter implements DeatailContract.Presenter {
 
-    private final DeatailFragmentContract.View view;
+    private final DeatailContract.View view;
 
-    public DetailPresenter(DeatailFragmentContract.View view) {
+    public DetailPresenter(DeatailContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void isShowOverview() {
+    public void onViewCreated() {
         view.overviewFilm();
     }
 }

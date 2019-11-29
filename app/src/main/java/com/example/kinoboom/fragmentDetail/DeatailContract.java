@@ -1,12 +1,13 @@
 package com.example.kinoboom.fragmentDetail;
 
-public interface DeatailFragmentContract {
+
+public interface DeatailContract {
 
     interface View {
-       void overviewFilm();
+        void overviewFilm();
     }
 
     interface Presenter {
-        void isShowOverview();
+        void onViewCreated();
     }
 }
