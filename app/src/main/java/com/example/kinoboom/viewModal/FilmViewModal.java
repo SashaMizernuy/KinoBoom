@@ -16,7 +16,6 @@ import io.reactivex.schedulers.Schedulers;
 public class FilmViewModal {
 
     private final FilmService filmService;
-    List<Film> responceList;
 
     public FilmViewModal(FilmService filmService) {
         this.filmService = filmService;
@@ -28,8 +27,7 @@ public class FilmViewModal {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(filmModal -> {
                     sortData(filmModal);
-                    getResult(filmModal);
-                    callback.accept(responceList);
+                    getResult(filmModal, callback);
                 }, throwable -> callback.error(throwable.getMessage()));
     }
 
@@ -37,8 +35,8 @@ public class FilmViewModal {
         Collections.sort(filmModal.getResults(), (result, t1) -> result.getTitle().compareTo(t1.getTitle()));
     }
 
-    public void getResult(FilmModal filmModal) {
-        responceList = new ArrayList<>();
+    public void getResult(FilmModal filmModal, CallbackInterface callback) {
+        List<Film> responceList = new ArrayList<>();
         for (int i = 0; i < filmModal.getResults().size(); i++) {
             FilmModal.Result filmModalResult = filmModal.getResults().get(i);
             responceList.add(new Film(filmModalResult.getPosterPath(),
@@ -47,6 +45,7 @@ public class FilmViewModal {
                     filmModalResult.getReleaseDate(),
                     filmModalResult.getOverview()));
         }
+        callback.accept(responceList);
     }
 
     public interface CallbackInterface {
